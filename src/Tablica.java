@@ -25,10 +25,8 @@ public class Tablica {
 
     public void dodajPoczatek(int liczba) {
 
-        int test = index + 1;
-
-        if (test == pojemnosc) ;
-        powiekszTablice();
+        if ((index + 1) >= pojemnosc)
+            powiekszTablice();
 
         int pomocnicza[] = new int[index];
 
@@ -43,6 +41,32 @@ public class Tablica {
         tablica[0] = liczba;
         index++;
 
+    }
+
+    public void dodaj(int pozycja, int liczba) {
+
+        if ((index + 1) >= pojemnosc) {
+            powiekszTablice();
+        }
+
+        if (pozycja == 0) {
+            dodajPoczatek(liczba);
+        } else if (pozycja >= index) {
+            dodajKoniec(liczba);
+        } else {
+
+            int pomocnicza[] = new int[index];
+            for (int i = pozycja; i < index; i++) {
+                pomocnicza[i] = tablica[i];
+            }
+            for (int i = index - 1; i >= pozycja; i--) {
+
+                tablica[i + 1] = pomocnicza[i];
+
+            }
+            tablica[pozycja] = liczba;
+            index++;
+        }
     }
 
     public void usunKoniec() {
