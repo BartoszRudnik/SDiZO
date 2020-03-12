@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class Tablica {
 
@@ -165,7 +162,7 @@ public class Tablica {
 
     public void wyswietlTablica() {
 
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i < getIndex(); i++) {
 
             System.out.println(tablica[i]);
 
@@ -174,6 +171,7 @@ public class Tablica {
     }
 
     public void wczytajTablica(String file) {
+
         try {
             FileInputStream fstream = new FileInputStream(file);
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
@@ -191,6 +189,26 @@ public class Tablica {
             }
 
             fstream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void wypiszTablice(String file) {
+
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+
+            bw.write(Integer.toString(getIndex()));
+            bw.newLine();
+
+            for (int i = 0; i < getIndex(); i++) {
+                bw.write(Integer.toString(tablica[i]));
+                bw.newLine();
+            }
+
+            bw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

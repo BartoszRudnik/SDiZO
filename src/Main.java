@@ -5,9 +5,10 @@ public class Main {
         Tablica tablica = new Tablica();
 
         tablica.dodajKoniec(100);
-        tablica.wczytajTablica("plik.txt");
+        tablica.wczytajTablica("wejscie.txt");
         tablica.zmniejszTablice();
         tablica.wyswietlTablica();
+        tablica.wypiszTablice("wyjscie.txt");
 
         System.out.println();
         System.out.println(tablica.getIndex());
