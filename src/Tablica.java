@@ -6,6 +6,32 @@ public class Tablica {
     private int pojemnosc;
     private int index;
 
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public void setPojemnosc(int pojemnosc) {
+        this.pojemnosc = pojemnosc;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public int getPojemnosc() {
+        return pojemnosc;
+    }
+
+    public int incIndex() {
+        index++;
+        return index;
+    }
+
+    public int dcIndex() {
+        index--;
+        return index;
+    }
+
     public Tablica() {
 
         tablica = new int[10];
@@ -16,66 +42,66 @@ public class Tablica {
 
     public void dodajKoniec(int liczba) {
 
-        if (index >= pojemnosc) {
+        if (getIndex() >= getPojemnosc()) {
             powiekszTablice();
         }
 
         tablica[index] = liczba;
-        index++;
+        incIndex();
 
     }
 
     public void dodajPoczatek(int liczba) {
 
-        if ((index + 1) >= pojemnosc)
+        if ((getIndex() + 1) >= getPojemnosc())
             powiekszTablice();
 
-        int pomocnicza[] = new int[index];
+        int pomocnicza[] = new int[getIndex()];
 
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i < getIndex(); i++) {
             pomocnicza[i] = tablica[i];
         }
 
-        for (int i = index - 1; i >= 0; i--) {
+        for (int i = getIndex() - 1; i >= 0; i--) {
             tablica[i + 1] = pomocnicza[i];
         }
 
         tablica[0] = liczba;
-        index++;
+        incIndex();
 
     }
 
     public void dodaj(int pozycja, int liczba) {
 
-        if ((index + 1) >= pojemnosc) {
+        if ((getIndex() + 1) >= getPojemnosc()) {
             powiekszTablice();
         }
 
         if (pozycja == 0) {
             dodajPoczatek(liczba);
-        } else if (pozycja >= index) {
+        } else if (pozycja >= getIndex()) {
             dodajKoniec(liczba);
         } else {
 
-            int pomocnicza[] = new int[index];
-            for (int i = pozycja; i < index; i++) {
+            int pomocnicza[] = new int[getIndex()];
+            for (int i = pozycja; i < getIndex(); i++) {
                 pomocnicza[i] = tablica[i];
             }
-            for (int i = index - 1; i >= pozycja; i--) {
+            for (int i = getIndex() - 1; i >= pozycja; i--) {
 
                 tablica[i + 1] = pomocnicza[i];
 
             }
             tablica[pozycja] = liczba;
-            index++;
+            incIndex();
         }
     }
 
     public void usunKoniec() {
 
         if (index >= 0) {
-            tablica[index - 1] = 0;
-            index--;
+            tablica[getIndex() - 1] = 0;
+            dcIndex();
             zmniejszTablice();
         }
 
@@ -83,14 +109,14 @@ public class Tablica {
 
     public void usunPoczatek() {
 
-        if (index >= 0) {
-            for (int i = 1; i < index; i++) {
+        if (getIndex() >= 0) {
+            for (int i = 1; i < getIndex(); i++) {
 
                 tablica[i - 1] = tablica[i];
 
             }
 
-            index--;
+            dcIndex();
             zmniejszTablice();
         }
 
@@ -100,13 +126,13 @@ public class Tablica {
 
         if (pozycja == 0) {
             usunPoczatek();
-        } else if (pozycja == index) {
+        } else if (pozycja == getIndex()) {
             usunKoniec();
         } else {
-            for (int i = pozycja + 1; i < index; i++) {
+            for (int i = pozycja + 1; i < getIndex(); i++) {
                 tablica[i - 1] = tablica[i];
             }
-            index--;
+            dcIndex();
             zmniejszTablice();
         }
 
@@ -114,15 +140,15 @@ public class Tablica {
 
     private void powiekszTablice() {
 
-        int pomocnicza[] = new int[pojemnosc * 2];
+        int pomocnicza[] = new int[getPojemnosc() * 2];
 
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i < getIndex(); i++) {
 
             pomocnicza[i] = tablica[i];
 
         }
 
-        pojemnosc *= 2;
+        setPojemnosc(getPojemnosc() * 2);
         tablica = pomocnicza;
 
     }
@@ -131,33 +157,25 @@ public class Tablica {
 
         int pomocnicza[] = null;
 
-        if (index > 0) {
+        if (getIndex() > 0) {
 
-            pomocnicza = new int[index];
+            pomocnicza = new int[getIndex()];
 
-            for (int i = 0; i < index; i++) {
+            for (int i = 0; i < getIndex(); i++) {
 
                 pomocnicza[i] = tablica[i];
 
             }
 
-            pojemnosc = index;
+            pojemnosc = getIndex();
             tablica = pomocnicza;
 
         }
 
     }
 
-    public int getIndex() {
-        return index;
-    }
-
-    public void setPojemnosc(int pojemnosc) {
-        this.pojemnosc = pojemnosc;
-    }
-
-    public int getPojemnosc() {
-        return pojemnosc;
+    public void znajdzTablica(int pozycja) {
+        System.out.println(tablica[pozycja]);
     }
 
     public void wyswietlTablica() {
@@ -195,7 +213,7 @@ public class Tablica {
 
     }
 
-    public void wypiszTablice(String file) {
+    public void zapiszTablice(String file) {
 
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));

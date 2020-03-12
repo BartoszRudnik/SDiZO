@@ -4,15 +4,17 @@ public class Main {
 
         Tablica tablica = new Tablica();
 
-        tablica.dodajKoniec(100);
         tablica.wczytajTablica("wejscie.txt");
         tablica.zmniejszTablice();
+
         tablica.wyswietlTablica();
-        tablica.wypiszTablice("wyjscie.txt");
+        tablica.zapiszTablice("wyjscie.txt");
 
         System.out.println();
-        System.out.println(tablica.getIndex());
         System.out.println(tablica.getPojemnosc());
+        System.out.println(tablica.getIndex());
+
+
     }
 
 }
