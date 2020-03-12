@@ -30,8 +30,14 @@ public class Tablica {
         if (test == pojemnosc) ;
         powiekszTablice();
 
+        int pomocnicza[] = new int[index];
+
+        for (int i = 0; i < index; i++) {
+            pomocnicza[i] = tablica[i];
+        }
+
         for (int i = index - 1; i >= 0; i--) {
-            tablica[i + 1] = tablica[i];
+            tablica[i + 1] = pomocnicza[i];
         }
 
         tablica[0] = liczba;
