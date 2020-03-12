@@ -6,9 +6,9 @@ public class Tablica {
 
     public Tablica() {
 
-        tablica = new int[10];
+        tablica = new int[1];
         index = 0;
-        pojemnosc = 10;
+        pojemnosc = 1;
 
     }
 
@@ -23,11 +23,43 @@ public class Tablica {
 
     }
 
+    public void dodajPoczatek(int liczba) {
+
+        int test = index + 1;
+
+        if (test == pojemnosc) ;
+        powiekszTablice();
+
+        for (int i = index - 1; i >= 0; i--) {
+            tablica[i + 1] = tablica[i];
+        }
+
+        tablica[0] = liczba;
+        index++;
+
+    }
+
     public void usunKoniec() {
 
-        if (index > 0) {
-            tablica[index] = 0;
+        if (index >= 0) {
+            tablica[index - 1] = 0;
             index--;
+            zmniejszTablice();
+        }
+
+    }
+
+    public void usunPoczatek() {
+
+        if (index >= 0) {
+            for (int i = 1; i < index; i++) {
+
+                tablica[i - 1] = tablica[i];
+
+            }
+
+            index--;
+            zmniejszTablice();
         }
 
     }
