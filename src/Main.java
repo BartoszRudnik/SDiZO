@@ -4,18 +4,14 @@ public class Main {
 
         Tablica tablica = new Tablica();
 
-        tablica.dodajKoniec(23);
-        tablica.dodajPoczatek(31);
-        tablica.dodajKoniec(51);
-        tablica.dodajKoniec(44);
-        tablica.dodajKoniec(41);
-        tablica.dodajKoniec(515);
-        tablica.dodajKoniec(5125);
-        tablica.dodajPoczatek(981);
-        tablica.dodaj(25, 0);
+        tablica.dodajKoniec(100);
+        tablica.wczytajTablica("plik.txt");
+        tablica.zmniejszTablice();
+        tablica.wyswietlTablica();
 
-        tablica.wypiszTablice();
-
+        System.out.println();
+        System.out.println(tablica.getIndex());
+        System.out.println(tablica.getPojemnosc());
     }
 
 }

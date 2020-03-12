@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Tablica {
 
     private int tablica[];
@@ -6,9 +11,9 @@ public class Tablica {
 
     public Tablica() {
 
-        tablica = new int[1];
+        tablica = new int[10];
         index = 0;
-        pojemnosc = 1;
+        pojemnosc = 10;
 
     }
 
@@ -94,6 +99,22 @@ public class Tablica {
 
     }
 
+    public void usun(int pozycja) {
+
+        if (pozycja == 0) {
+            usunPoczatek();
+        } else if (pozycja == index) {
+            usunKoniec();
+        } else {
+            for (int i = pozycja + 1; i < index; i++) {
+                tablica[i - 1] = tablica[i];
+            }
+            index--;
+            zmniejszTablice();
+        }
+
+    }
+
     private void powiekszTablice() {
 
         int pomocnicza[] = new int[pojemnosc * 2];
@@ -109,7 +130,7 @@ public class Tablica {
 
     }
 
-    private void zmniejszTablice() {
+    public void zmniejszTablice() {
 
         int pomocnicza[] = null;
 
@@ -130,12 +151,48 @@ public class Tablica {
 
     }
 
-    public void wypiszTablice() {
+    public int getIndex() {
+        return index;
+    }
+
+    public void setPojemnosc(int pojemnosc) {
+        this.pojemnosc = pojemnosc;
+    }
+
+    public int getPojemnosc() {
+        return pojemnosc;
+    }
+
+    public void wyswietlTablica() {
 
         for (int i = 0; i < index; i++) {
 
             System.out.println(tablica[i]);
 
+        }
+
+    }
+
+    public void wczytajTablica(String file) {
+        try {
+            FileInputStream fstream = new FileInputStream(file);
+            BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+
+            String line;
+            int rozmiarPliku = 0;
+
+            if ((line = br.readLine()) != null) {
+                rozmiarPliku = Integer.parseInt(line);
+            }
+
+            for (int i = 0; i < rozmiarPliku; i++) {
+                if ((line = br.readLine()) != null)
+                    dodaj(getIndex(), Integer.parseInt(line));
+            }
+
+            fstream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }
