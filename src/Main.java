@@ -2,18 +2,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Tablica tablica = new Tablica();
+        Lista lista = new Lista();
 
-        tablica.wczytajTablica("wejscie.txt");
-        tablica.zmniejszTablice();
+        lista.dodajKoniec(44);
+        lista.dodajKoniec(22);
+        lista.dodajKoniec(100);
+        lista.dodajKoniec(55);
+        lista.dodajKoniec(200);
 
-        tablica.wyswietlTablica();
-        tablica.zapiszTablice("wyjscie.txt");
 
-        System.out.println();
-        System.out.println(tablica.getPojemnosc());
-        System.out.println(tablica.getIndex());
-
+        lista.wyswietlLista();
 
     }
 

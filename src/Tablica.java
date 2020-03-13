@@ -122,7 +122,7 @@ public class Tablica {
 
     }
 
-    public void usun(int pozycja) {
+    public void usunWskazany(int pozycja) {
 
         if (pozycja == 0) {
             usunPoczatek();
