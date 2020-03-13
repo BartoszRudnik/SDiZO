@@ -188,10 +188,10 @@ public class Tablica {
 
     }
 
-    public void wczytajTablica(String file) {
+    public void wczytajTablica(String nazwaPliku) {
 
         try {
-            FileInputStream fstream = new FileInputStream(file);
+            FileInputStream fstream = new FileInputStream(nazwaPliku);
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
 
             String line;
@@ -213,10 +213,10 @@ public class Tablica {
 
     }
 
-    public void zapiszTablice(String file) {
+    public void zapiszTablica(String nazwaPliku) {
 
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(nazwaPliku));
 
             bw.write(Integer.toString(getIndex()));
             bw.newLine();

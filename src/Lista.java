@@ -1,3 +1,5 @@
+import java.io.*;
+
 public class Lista {
 
     private ElementLista glowa;
@@ -46,16 +48,28 @@ public class Lista {
 
     }
 
-    public void dodaj(ElementLista poprzednik, int liczba) {
+    public void dodaj(int pozycja, int liczba) {
 
         ElementLista element = new ElementLista(liczba);
+        ElementLista pomocniczy = getGlowa();
 
-        if (poprzednik == null) {
-            dodajKoniec(liczba);
-        } else {
-            element.setNast(poprzednik.getNast());
-            poprzednik.setNast(element);
-            element.setPoprz(poprzednik);
+        if (pozycja > rozmiarListy())
+            pozycja = rozmiarListy();
+
+        if (pozycja == 0)
+            dodajPoczatek(liczba);
+        else {
+            for (int i = 1; i < pozycja; i++) {
+                if (pomocniczy != null)
+                    pomocniczy = pomocniczy.getNast();
+                else
+                    return;
+            }
+
+            element.setNast(pomocniczy.getNast());
+            pomocniczy.setNast(element);
+            element.setPoprz(pomocniczy);
+
             if (element.getNast() != null)
                 element.getNast().setPoprz(element);
         }
@@ -173,4 +187,70 @@ public class Lista {
         }
 
     }
+
+    private int rozmiarListy() {
+
+        int rozmiar = 0;
+        ElementLista element = getGlowa();
+
+        while (element != null) {
+            element = element.getNast();
+            rozmiar++;
+        }
+
+        return rozmiar;
+
+    }
+
+    public void wczytajLista(String nazwaPliku) {
+
+        try {
+            FileInputStream fstream = new FileInputStream(nazwaPliku);
+            BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+
+            String line;
+            int rozmiarPliku = 0;
+
+            if ((line = br.readLine()) != null) {
+                rozmiarPliku = Integer.parseInt(line);
+            }
+
+            for (int i = 0; i < rozmiarPliku; i++) {
+                if ((line = br.readLine()) != null) {
+                    dodaj(rozmiarListy(), Integer.parseInt(line));
+                }
+            }
+
+            fstream.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void zapiszLista(String nazwaPliku) {
+
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(nazwaPliku));
+
+            bw.write(Integer.toString(rozmiarListy()));
+            bw.newLine();
+
+            ElementLista element = getGlowa();
+
+            for (int i = 0; i < rozmiarListy(); i++) {
+                bw.write(Integer.toString(element.getWartosc()));
+                bw.newLine();
+                element = element.getNast();
+            }
+
+            bw.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }
