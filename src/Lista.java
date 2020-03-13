@@ -135,6 +135,24 @@ public class Lista {
 
     }
 
+    public void wyswietlElement(int pozycja) {
+
+        if (getGlowa() == null || pozycja < 0)
+            return;
+
+        ElementLista element = getGlowa();
+
+        for (int i = 0; i < pozycja; i++) {
+            if (element != null)
+                element = element.getNast();
+            else
+                return;
+        }
+
+        System.out.println(element.getWartosc());
+
+    }
+
 
     public void wyswietlLista() {
 
