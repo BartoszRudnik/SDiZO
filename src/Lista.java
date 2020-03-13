@@ -1,56 +1,18 @@
-class Element {
-
-    private int wartosc;
-    private Element nast;
-    private Element poprz;
-
-    Element(int wartosc) {
-        this.wartosc = wartosc;
-        nast = null;
-        poprz = null;
-    }
-
-    public void setWartosc(int wartosc) {
-        this.wartosc = wartosc;
-    }
-
-    public void setNast(Element e) {
-        nast = e;
-    }
-
-    public void setPoprz(Element e) {
-        poprz = e;
-    }
-
-    public int getWartosc() {
-        return wartosc;
-    }
-
-    public Element getNast() {
-        return nast;
-    }
-
-    public Element getPoprz() {
-        return poprz;
-    }
-
-}
-
 public class Lista {
 
-    private Element glowa;
+    private ElementLista glowa;
 
-    public Element getGlowa() {
+    public ElementLista getGlowa() {
         return glowa;
     }
 
-    public void setGlowa(Element glowa) {
+    public void setGlowa(ElementLista glowa) {
         this.glowa = glowa;
     }
 
     public void dodajPoczatek(int liczba) {
 
-        Element element = new Element(liczba);
+        ElementLista element = new ElementLista(liczba);
 
         element.setPoprz(null);
         element.setNast(getGlowa());
@@ -62,8 +24,8 @@ public class Lista {
 
     public void dodajKoniec(int liczba) {
 
-        Element element = new Element(liczba);
-        Element pomocniczy;
+        ElementLista element = new ElementLista(liczba);
+        ElementLista pomocniczy;
 
         element.setNast(null);
 
@@ -84,9 +46,9 @@ public class Lista {
 
     }
 
-    public void dodaj(Element poprzednik, int liczba) {
+    public void dodaj(ElementLista poprzednik, int liczba) {
 
-        Element element = new Element(liczba);
+        ElementLista element = new ElementLista(liczba);
 
         if (poprzednik == null) {
             dodajKoniec(liczba);
@@ -100,7 +62,7 @@ public class Lista {
 
     }
 
-    private Element usun(Element glowa, Element usuwany) {
+    private ElementLista usun(ElementLista glowa, ElementLista usuwany) {
 
         if (glowa == null || usuwany == null)
             return null;
@@ -137,7 +99,7 @@ public class Lista {
         if (getGlowa() == null)
             return;
 
-        Element element = getGlowa();
+        ElementLista element = getGlowa();
 
         if (element.getNast() == null)
             usunPoczatek();
@@ -159,7 +121,7 @@ public class Lista {
         if (pozycja == 0)
             usunPoczatek();
 
-        Element element = getGlowa();
+        ElementLista element = getGlowa();
 
         for (int i = 1; i <= pozycja; i++) {
             if (element != null) {
@@ -176,7 +138,7 @@ public class Lista {
 
     public void wyswietlLista() {
 
-        Element testElement = getGlowa();
+        ElementLista testElement = getGlowa();
 
         while (testElement != null) {
             System.out.println(testElement.getWartosc());
@@ -185,7 +147,7 @@ public class Lista {
 
     }
 
-    public void wyswietlLista(Element element) {
+    public void wyswietlLista(ElementLista element) {
 
         while (element != null) {
             System.out.println(element.getWartosc());
