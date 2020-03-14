@@ -174,7 +174,7 @@ public class Tablica {
 
     }
 
-    public void znajdzTablica(int pozycja) {
+    public void znajdzPozycjad(int pozycja) {
         System.out.println(tablica[pozycja]);
     }
 

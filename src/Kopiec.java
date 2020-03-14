@@ -6,7 +6,7 @@ public class Kopiec {
 
     public Kopiec() {
 
-        rozmiar = 100;
+        rozmiar = 3;
         index = 1;
         kopiec = new int[rozmiar];
 
@@ -50,12 +50,12 @@ public class Kopiec {
         int p = indexPDziecko(pozycja);
         int max;
 
-        if (l <= getRozmiar() && kopiec[l] > kopiec[pozycja]) {
+        if (l < getRozmiar() && kopiec[l] > kopiec[pozycja]) {
             max = l;
         } else
             max = pozycja;
 
-        if (p <= getRozmiar() && kopiec[p] > kopiec[max]) {
+        if (p < getRozmiar() && kopiec[p] > kopiec[max]) {
             max = p;
         }
 
@@ -80,6 +80,10 @@ public class Kopiec {
 
     public void dodajKopiec(int liczba) {
 
+        if (getIndex() >= getRozmiar()) {
+            powiekszKopiec();
+        }
+
         kopiec[index] = liczba;
         zwiekszIndex();
         budujKopiec();
@@ -91,6 +95,22 @@ public class Kopiec {
         for (int i = 1; i < index; i++) {
             System.out.println(kopiec[i]);
         }
+
+    }
+
+    private void powiekszKopiec() {
+
+        int pomocnicza[] = new int[getRozmiar() + 1];
+
+        for (int i = 1; i < getRozmiar(); i++) {
+
+            pomocnicza[i] = kopiec[i];
+
+        }
+
+        setRozmiar(getRozmiar() + 1);
+
+        kopiec = pomocnicza;
 
     }
 
