@@ -1,3 +1,5 @@
+import java.io.*;
+
 public class Kopiec {
 
     private int[] kopiec;
@@ -8,7 +10,7 @@ public class Kopiec {
 
         rozmiar = 3;
         index = 1;
-        kopiec = new int[rozmiar];
+        kopiec = new int[rozmiar + 1];
 
     }
 
@@ -30,6 +32,10 @@ public class Kopiec {
 
     private void zwiekszIndex() {
         index++;
+    }
+
+    private void zmniejszIndex() {
+        index--;
     }
 
     private int indexRodzic(int pozycja) {
@@ -78,7 +84,7 @@ public class Kopiec {
 
     }
 
-    public void dodajKopiec(int liczba) {
+    public void dodaj(int liczba) {
 
         if (getIndex() >= getRozmiar()) {
             powiekszKopiec();
@@ -90,9 +96,25 @@ public class Kopiec {
 
     }
 
+    public void usun(int liczba) {
+
+        zmniejszKopiec(liczba);
+        zmniejszIndex();
+        budujKopiec();
+
+    }
+
+    public void usunKorzen() {
+
+        zmniejszKopiec(kopiec[1]);
+        zmniejszIndex();
+        budujKopiec();
+
+    }
+
     public void wyswietlKopiec() {
 
-        for (int i = 1; i < index; i++) {
+        for (int i = 1; i < getRozmiar(); i++) {
             System.out.println(kopiec[i]);
         }
 
@@ -111,6 +133,94 @@ public class Kopiec {
         setRozmiar(getRozmiar() + 1);
 
         kopiec = pomocnicza;
+
+    }
+
+    private void zmniejszKopiec(int liczba) {
+
+        int pomocnicza[] = new int[getRozmiar() - 1];
+
+        for (int i = 1; i < getRozmiar(); i++) {
+
+            if (kopiec[i] == liczba) {
+
+                for (int j = 1; j < i; j++) {
+                    pomocnicza[j] = kopiec[j];
+                }
+
+                for (int k = (i + 1); k < getRozmiar(); k++) {
+                    pomocnicza[k - 1] = kopiec[k];
+                }
+
+            }
+
+        }
+
+        setRozmiar(getRozmiar() - 1);
+        kopiec = pomocnicza;
+
+    }
+
+    public boolean znajdzKopiec(int liczba) {
+
+        int i = 1;
+
+        while (i < getRozmiar()) {
+
+            if (kopiec[i] == liczba)
+                return true;
+            i++;
+
+        }
+
+        return false;
+
+    }
+
+    public void zapiszKopiec(String nazwaPliku) {
+
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(nazwaPliku));
+
+            bw.write(Integer.toString(getRozmiar() - 1));
+            bw.newLine();
+
+            for (int i = 1; i < getRozmiar(); i++) {
+                bw.write(Integer.toString(kopiec[i]));
+                bw.newLine();
+            }
+
+            bw.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void wczytajKopiec(String nazwaPliku) {
+
+        try {
+            FileInputStream fstream = new FileInputStream(nazwaPliku);
+            BufferedReader br = new BufferedReader((new InputStreamReader(fstream)));
+
+            String line;
+            int rozmiarPliku = 0;
+
+            if ((line = br.readLine()) != null) {
+                rozmiarPliku = Integer.parseInt(line);
+            }
+
+            for (int i = 1; i <= rozmiarPliku; i++) {
+                if ((line = br.readLine()) != null)
+                    dodaj(Integer.parseInt(line));
+            }
+
+            fstream.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
