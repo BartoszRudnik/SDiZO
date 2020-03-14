@@ -174,7 +174,7 @@ public class Tablica {
 
     }
 
-    public void znajdzPozycjad(int pozycja) {
+    public void znajdzPozycja(int pozycja) {
         System.out.println(tablica[pozycja]);
     }
 
@@ -230,6 +230,34 @@ public class Tablica {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public int maxTablica() {
+
+        int max = tablica[0];
+
+        for (int i = 1; i < getIndex(); i++) {
+            if (tablica[i] > max) {
+                max = tablica[i];
+            }
+        }
+
+        return max;
+
+    }
+
+    public int minTablica() {
+
+        int min = tablica[0];
+
+        for (int i = 1; i < getIndex(); i++) {
+            if (tablica[i] < min) {
+                min = tablica[i];
+            }
+        }
+
+        return min;
 
     }
 

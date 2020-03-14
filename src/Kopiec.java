@@ -224,4 +224,21 @@ public class Kopiec {
 
     }
 
+    public int maxKopiec() {
+        return kopiec[1];
+    }
+
+    public int minKopiec() {
+
+        int min = kopiec[1];
+
+        for (int i = 2; i < getRozmiar(); i++) {
+            if (kopiec[i] < min)
+                min = kopiec[i];
+        }
+
+        return min;
+
+    }
+
 }

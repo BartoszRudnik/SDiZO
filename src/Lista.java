@@ -2,19 +2,19 @@ import java.io.*;
 
 public class Lista {
 
-    private ElementLista glowa;
+    private WezelLista glowa;
 
-    public ElementLista getGlowa() {
+    public WezelLista getGlowa() {
         return glowa;
     }
 
-    public void setGlowa(ElementLista glowa) {
+    public void setGlowa(WezelLista glowa) {
         this.glowa = glowa;
     }
 
     public void dodajPoczatek(int liczba) {
 
-        ElementLista element = new ElementLista(liczba);
+        WezelLista element = new WezelLista(liczba);
 
         element.setPoprz(null);
         element.setNast(getGlowa());
@@ -26,8 +26,8 @@ public class Lista {
 
     public void dodajKoniec(int liczba) {
 
-        ElementLista element = new ElementLista(liczba);
-        ElementLista pomocniczy;
+        WezelLista element = new WezelLista(liczba);
+        WezelLista pomocniczy;
 
         element.setNast(null);
 
@@ -50,8 +50,8 @@ public class Lista {
 
     public void dodaj(int pozycja, int liczba) {
 
-        ElementLista element = new ElementLista(liczba);
-        ElementLista pomocniczy = getGlowa();
+        WezelLista element = new WezelLista(liczba);
+        WezelLista pomocniczy = getGlowa();
 
         if (pozycja > rozmiarListy())
             pozycja = rozmiarListy();
@@ -76,7 +76,7 @@ public class Lista {
 
     }
 
-    private ElementLista usun(ElementLista glowa, ElementLista usuwany) {
+    private WezelLista usun(WezelLista glowa, WezelLista usuwany) {
 
         if (glowa == null || usuwany == null)
             return null;
@@ -113,7 +113,7 @@ public class Lista {
         if (getGlowa() == null)
             return;
 
-        ElementLista element = getGlowa();
+        WezelLista element = getGlowa();
 
         if (element.getNast() == null)
             usunPoczatek();
@@ -122,7 +122,7 @@ public class Lista {
             element = element.getNast();
         }
 
-        if (element.getPoprz() != null)
+        if (null != element.getPoprz())
             element.getPoprz().setNast(null);
 
     }
@@ -135,7 +135,7 @@ public class Lista {
         if (pozycja == 0)
             usunPoczatek();
 
-        ElementLista element = getGlowa();
+        WezelLista element = getGlowa();
 
         for (int i = 1; i <= pozycja; i++) {
             if (element != null) {
@@ -154,7 +154,7 @@ public class Lista {
         if (getGlowa() == null || pozycja < 0)
             return;
 
-        ElementLista element = getGlowa();
+        WezelLista element = getGlowa();
 
         for (int i = 0; i < pozycja; i++) {
             if (element != null)
@@ -170,7 +170,7 @@ public class Lista {
 
     public void wyswietlLista() {
 
-        ElementLista testElement = getGlowa();
+        WezelLista testElement = getGlowa();
 
         while (testElement != null) {
             System.out.println(testElement.getWartosc());
@@ -179,7 +179,7 @@ public class Lista {
 
     }
 
-    public void wyswietlLista(ElementLista element) {
+    public void wyswietlLista(WezelLista element) {
 
         while (element != null) {
             System.out.println(element.getWartosc());
@@ -191,7 +191,7 @@ public class Lista {
     private int rozmiarListy() {
 
         int rozmiar = 0;
-        ElementLista element = getGlowa();
+        WezelLista element = getGlowa();
 
         while (element != null) {
             element = element.getNast();
@@ -237,7 +237,7 @@ public class Lista {
             bw.write(Integer.toString(rozmiarListy()));
             bw.newLine();
 
-            ElementLista element = getGlowa();
+            WezelLista element = getGlowa();
 
             for (int i = 0; i < rozmiarListy(); i++) {
                 bw.write(Integer.toString(element.getWartosc()));
@@ -250,6 +250,52 @@ public class Lista {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public int maxLista() {
+
+        WezelLista wezel = glowa;
+
+        int max = wezel.getWartosc();
+
+        if (wezel.getNast() != null)
+            wezel = wezel.getNast();
+
+        for (int i = 1; i < rozmiarListy(); i++) {
+
+            if (wezel.getWartosc() > max)
+                max = wezel.getWartosc();
+
+            wezel = wezel.getNast();
+
+        }
+
+        return max;
+
+    }
+
+    public int minLista() {
+
+        WezelLista wezel = glowa;
+
+        int min = wezel.getWartosc();
+
+        if (wezel.getNast() != null) {
+            wezel = wezel.getNast();
+        }
+
+        for (int i = 1; i < rozmiarListy(); i++) {
+
+            if (wezel.getWartosc() < min) {
+                min = wezel.getWartosc();
+            }
+
+            wezel = wezel.getNast();
+
+        }
+
+        return min;
 
     }
 

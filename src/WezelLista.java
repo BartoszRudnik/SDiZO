@@ -1,10 +1,10 @@
-public class ElementLista {
+public class WezelLista {
 
     private int wartosc;
-    private ElementLista nast;
-    private ElementLista poprz;
+    private WezelLista nast;
+    private WezelLista poprz;
 
-    ElementLista(int wartosc) {
+    WezelLista(int wartosc) {
         this.wartosc = wartosc;
         nast = null;
         poprz = null;
@@ -14,11 +14,11 @@ public class ElementLista {
         this.wartosc = wartosc;
     }
 
-    public void setNast(ElementLista e) {
+    public void setNast(WezelLista e) {
         nast = e;
     }
 
-    public void setPoprz(ElementLista e) {
+    public void setPoprz(WezelLista e) {
         poprz = e;
     }
 
@@ -26,11 +26,11 @@ public class ElementLista {
         return wartosc;
     }
 
-    public ElementLista getNast() {
+    public WezelLista getNast() {
         return nast;
     }
 
-    public ElementLista getPoprz() {
+    public WezelLista getPoprz() {
         return poprz;
     }
 
