@@ -25,7 +25,7 @@ public class WezelDrzewo {
         ojciec = null;
         lSyn = null;
         pSyn = null;
-        color = false;
+        color = true;
 
     }
 

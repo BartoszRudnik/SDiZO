@@ -10,10 +10,21 @@ public class Drzewo {
 
     private boolean isRed(WezelDrzewo wezel) {
 
-        if (wezel.getColor() == czerwony)
+        if (wezel == null)
+            return false;
+        else if (wezel.getColor() == true)
             return true;
         else
             return false;
+
+    }
+
+    private int rozmiar(WezelDrzewo wezel) {
+
+        if (wezel != null)
+            return wezel.getRozmiar();
+        else
+            return 0;
 
     }
 
@@ -49,7 +60,7 @@ public class Drzewo {
         if (isRed(wezel.getlSyn()) == true && isRed(wezel.getpSyn()) == true)
             kolory(wezel);
 
-        wezel.setRozmiar(wezel.getlSyn().getRozmiar() + wezel.getpSyn().getRozmiar());
+        wezel.setRozmiar(rozmiar(wezel.getpSyn()) + rozmiar(wezel.getlSyn()));
 
         return wezel;
 
@@ -111,8 +122,8 @@ public class Drzewo {
         if (wezel == null)
             return;
 
+        System.out.println(((wezel.getColor() == czerwony) ? "Color: Red " : "Color: Black ") + " " + "Wartosc: " + wezel.getWartosc());
         wypisz(wezel.getlSyn());
-        System.out.println(((wezel.getColor() == czerwony) ? "Color: Red " : "Color: Black ") + " " + wezel.getWartosc() + " " + wezel.getOjciec().getWartosc());
         wypisz(wezel.getpSyn());
 
     }
