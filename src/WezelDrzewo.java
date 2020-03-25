@@ -12,6 +12,7 @@ public class WezelDrzewo {
         ojciec = null;
         lSyn = null;
         pSyn = null;
+        color = false // false -> czarny, true -> czerwony
 
     }
 
@@ -21,6 +22,7 @@ public class WezelDrzewo {
         ojciec = null;
         lSyn = null;
         pSyn = null;
+        color = false;
 
     }
 
@@ -58,6 +60,10 @@ public class WezelDrzewo {
 
     public WezelDrzewo getpSyn() {
         return pSyn;
+    }
+
+    public boolean getColor() {
+        return color;
     }
 
 }
