@@ -7,7 +7,7 @@ public class WezelAvl {
 
     WezelAvl(int wartosc) {
         this.wartosc = wartosc;
-        wysokosc = 0;
+        wysokosc = 1;
         lSyn = null;
         pSyn = null;
     }

@@ -26,7 +26,7 @@ public class AVL {
     private int bilansWysokosci(WezelAvl wezel) {
 
         if (wezel != null) {
-            return (maxWysokosc(wezel.getpSyn()) - maxWysokosc(wezel.getlSyn()));
+            return (wysokosc(wezel.getlSyn()) - wysokosc(wezel.getpSyn()));
         } else
             return 0;
 
@@ -44,11 +44,8 @@ public class AVL {
 
     private WezelAvl rotacjaPrawo(WezelAvl wezel) {
 
-        WezelAvl pomoc;
-        WezelAvl pomoc2;
-
-        pomoc = wezel.getlSyn();
-        pomoc2 = pomoc.getpSyn();
+        WezelAvl pomoc = wezel.getlSyn();
+        WezelAvl pomoc2 = pomoc.getpSyn();
 
         pomoc.setPSyn(wezel);
         wezel.setLSyn(pomoc2);
@@ -62,11 +59,8 @@ public class AVL {
 
     private WezelAvl rotacjaLewo(WezelAvl wezel) {
 
-        WezelAvl pomoc;
-        WezelAvl pomoc2;
-
-        pomoc = wezel.getpSyn();
-        pomoc2 = pomoc.getlSyn();
+        WezelAvl pomoc = wezel.getpSyn();
+        WezelAvl pomoc2 = pomoc.getlSyn();
 
         pomoc.setLSyn(wezel);
         wezel.setPSyn(pomoc2);
@@ -85,35 +79,143 @@ public class AVL {
         if (wezel == null)
             return (new WezelAvl(wartosc));
 
-        if (wartosc == wezel.getWartosc())
-            return wezel;
+        if (wartosc > wezel.getWartosc())
+            wezel.setPSyn((dodaj(wezel.getpSyn(), wartosc)));
 
         else if (wartosc < wezel.getWartosc())
             wezel.setLSyn(dodaj(wezel.getlSyn(), wartosc));
 
         else
-            wezel.setPSyn((dodaj(wezel.getpSyn(), wartosc)));
+            return wezel;
 
         wezel.setWysokosc(maxWysokosc(wezel));
         bilans = bilansWysokosci(wezel);
 
-        if (bilans < -1 && wartosc < wezel.getlSyn().getWartosc())
+        if (bilans > 1 && wartosc < wezel.getlSyn().getWartosc()) {
             return rotacjaPrawo(wezel);
+        }
 
-        else if (bilans < -1 && wartosc > wezel.getlSyn().getWartosc()) {
+        if (bilans < -1 && wartosc > wezel.getpSyn().getWartosc()) {
+            return rotacjaLewo(wezel);
+        }
+
+        if (bilans > 1 && wartosc > wezel.getlSyn().getWartosc()) {
             wezel.setLSyn(rotacjaLewo(wezel.getlSyn()));
             return rotacjaPrawo(wezel);
-        } else if (bilans > 1 && wartosc < wezel.getpSyn().getWartosc()) {
+        }
+
+        if (bilans < -1 && wartosc < wezel.getpSyn().getWartosc()) {
             wezel.setPSyn(rotacjaPrawo(wezel.getpSyn()));
             return rotacjaLewo(wezel);
-        } else if (bilans > 1 && wartosc > wezel.getpSyn().getWartosc()) {
-            return rotacjaLewo(wezel);
-        } else {
-            wezel.setWysokosc(maxWysokosc(wezel));
-            return wezel;
         }
+
+        return wezel;
+
     }
 
-    //usuwanie
+    public WezelAvl usun(WezelAvl wezel, int wartosc) {
+
+        int bilans;
+
+        if (wezel == null) {
+            return wezel;
+        }
+
+        if (wezel.getWartosc() > wartosc) {
+            wezel.setLSyn(usun(wezel.getlSyn(), wartosc));
+        } else if (wezel.getWartosc() < wartosc) {
+            wezel.setPSyn(usun(wezel.getpSyn(), wartosc));
+        } else {
+
+            if (wezel.getlSyn() == null || wezel.getpSyn() == null) {
+
+                WezelAvl pomoc = null;
+
+                if (wezel.getlSyn() == pomoc)
+                    pomoc = wezel.getpSyn();
+                else
+                    pomoc = wezel.getlSyn();
+
+                if (pomoc == null) {
+                    pomoc = wezel;
+                    wezel = null;
+                } else
+                    wezel = pomoc;
+
+            } else {
+
+                WezelAvl pomoc = minWezel(wezel.getpSyn());
+
+                wezel.setWartosc(pomoc.getWartosc());
+                wezel.setPSyn(usun(wezel.getpSyn(), wezel.getWartosc()));
+
+            }
+        }
+
+        if (wezel == null)
+            return wezel;
+
+        wezel.setWysokosc(maxWysokosc(wezel));
+        bilans = bilansWysokosci(wezel);
+
+        if (bilans > 1 && bilansWysokosci(wezel.getlSyn()) >= 0)
+            return rotacjaPrawo(wezel);
+
+        if (bilans > 1 && bilansWysokosci(wezel.getlSyn()) < 0) {
+            wezel.setLSyn(rotacjaLewo(wezel.getlSyn()));
+            return rotacjaPrawo(wezel);
+        }
+
+        if (bilans < -1 && bilansWysokosci(wezel.getpSyn()) <= 0) {
+            return rotacjaLewo(wezel);
+        }
+
+        if (bilans < -1 && bilansWysokosci(wezel.getpSyn()) > 0) {
+            wezel.setPSyn(rotacjaPrawo(wezel.getpSyn()));
+            return rotacjaLewo(wezel);
+        }
+
+        return wezel;
+
+    }
+
+    private WezelAvl minWezel(WezelAvl wezel) {
+
+        WezelAvl pomocnik = wezel;
+
+        while (pomocnik.getlSyn() != null) {
+            pomocnik = pomocnik.getlSyn();
+        }
+
+        return pomocnik;
+
+    }
+
+
+    public void AvlMin(WezelAvl wezel) {
+
+        int min = wezel.getWartosc();
+
+        while (wezel.getlSyn() != null) {
+            min = wezel.getlSyn().getWartosc();
+            wezel = wezel.getlSyn();
+        }
+
+        System.out.println(min);
+
+    }
+
+    public void AvlMax(WezelAvl wezel) {
+
+        int max = wezel.getWartosc();
+
+        while (wezel.getpSyn() != null) {
+            max = wezel.getpSyn().getWartosc();
+            wezel = wezel.getpSyn();
+        }
+
+        System.out.println(max);
+
+    }
 
 }
