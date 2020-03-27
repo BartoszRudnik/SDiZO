@@ -1,40 +1,28 @@
 public class WezelDrzewo {
 
     private int wartosc;
-    private int rozmiar;
-    WezelDrzewo ojciec;
-    WezelDrzewo lSyn;
-    WezelDrzewo pSyn;
-    boolean color;
+    private WezelDrzewo ojciec;
+    private WezelDrzewo lSyn;
+    private WezelDrzewo pSyn;
+    private int color;
 
-    public WezelDrzewo() {
-
-        wartosc = 0;
-        rozmiar = 1;
-        ojciec = null;
-        lSyn = null;
-        pSyn = null;
-        color = false; // false -> czarny, true -> czerwony
-
-    }
 
     public WezelDrzewo(int wartosc) {
 
         this.wartosc = wartosc;
-        rozmiar = 1;
         ojciec = null;
         lSyn = null;
         pSyn = null;
-        color = true;
+        color = 1;
+
+    }
+
+    public WezelDrzewo() {
 
     }
 
     public void setWartosc(int wartosc) {
         this.wartosc = wartosc;
-    }
-
-    public void setRozmiar(int rozmiar) {
-        this.rozmiar = rozmiar;
     }
 
     public void setOjciec(WezelDrzewo ojciec) {
@@ -49,7 +37,7 @@ public class WezelDrzewo {
         this.pSyn = pSyn;
     }
 
-    public void setColor(Boolean color) {
+    public void setColor(int color) {
         this.color = color;
     }
 
@@ -69,11 +57,7 @@ public class WezelDrzewo {
         return pSyn;
     }
 
-    public int getRozmiar() {
-        return rozmiar;
-    }
-
-    public boolean getColor() {
+    public int getColor() {
         return color;
     }
 

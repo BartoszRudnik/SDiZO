@@ -1,130 +1,98 @@
 public class Drzewo {
 
-    WezelDrzewo wierzchołek;
-    private boolean czerwony = true;
-    private boolean czarny = false;
+    private WezelDrzewo korzen;
+    private WezelDrzewo straznik;
 
-    public Drzewo() {
+    private static final int czerwony = 1;
+    private static final int czarny = 0;
 
-    }
+    private void rotacjaLewo(WezelDrzewo wezel) {
 
-    private boolean isRed(WezelDrzewo wezel) {
+        WezelDrzewo pomoc = wezel.getpSyn();
+        wezel.setpSyn(pomoc.getlSyn());
 
-        if (wezel == null)
-            return false;
-        else if (wezel.getColor() == true)
-            return true;
+        if (pomoc.getlSyn() != straznik)
+            pomoc.getlSyn().setOjciec(wezel);
+
+        pomoc.setOjciec(wezel.getOjciec());
+
+        if (wezel.getOjciec() == null)
+            korzen = pomoc;
+        else if (wezel == wezel.getOjciec().getlSyn())
+            wezel.getOjciec().setlSyn(pomoc);
         else
-            return false;
+            wezel.getOjciec().setpSyn(pomoc);
+
+        pomoc.setlSyn(wezel);
+        wezel.setOjciec(pomoc);
 
     }
 
-    private int rozmiar(WezelDrzewo wezel) {
+    private void rotacjaPrawo(WezelDrzewo wezel) {
 
-        if (wezel != null)
-            return wezel.getRozmiar();
+        WezelDrzewo pomoc = wezel.getlSyn();
+        wezel.setlSyn(pomoc.getpSyn());
+
+        if (pomoc.getpSyn() != straznik) {
+            pomoc.getpSyn().setOjciec(wezel);
+        }
+
+        pomoc.setOjciec(wezel.getOjciec());
+
+        if (wezel.getOjciec() != null) {
+            korzen = pomoc;
+        } else if (wezel == wezel.getOjciec().getpSyn())
+            wezel.getOjciec().setpSyn(pomoc);
         else
-            return 0;
+            wezel.getOjciec().setlSyn(pomoc);
 
-    }
+        pomoc.setpSyn(wezel);
+        wezel.setOjciec(pomoc);
 
-    public WezelDrzewo getWierzchołek() {
-        return wierzchołek;
     }
 
     public void dodajDrzewo(int wartosc) {
 
-        wierzchołek = dodaj(wierzchołek, wartosc);
-        wierzchołek.setColor(czarny);
+        WezelDrzewo wezel = new WezelDrzewo(wartosc);
 
-    }
+        wezel.setlSyn(straznik);
+        wezel.setpSyn(straznik);
 
-    private WezelDrzewo dodaj(WezelDrzewo wezel, int wartosc) {
+        WezelDrzewo pomoc1 = new WezelDrzewo();
+        WezelDrzewo pomoc2 = new WezelDrzewo();
 
-        if (wezel == null)
-            return new WezelDrzewo(wartosc);
+        pomoc2 = korzen;
 
-        if (wezel.getWartosc() < wartosc)
-            wezel.setlSyn(dodaj(wezel.getlSyn(), wartosc));
-        else if (wezel.getWartosc() > wartosc)
-            wezel.setpSyn(dodaj(wezel.getpSyn(), wartosc));
+        while (pomoc2 != straznik) {
+
+            pomoc1 = pomoc2;
+
+            if (wezel.getWartosc() > pomoc2.getWartosc())
+                pomoc2 = pomoc2.getpSyn();
+            else
+                pomoc2 = pomoc2.getlSyn();
+
+        }
+
+        wezel.setOjciec(pomoc1);
+
+        if (wezel.getWartosc() < pomoc1.getWartosc())
+            pomoc1.setlSyn(wezel);
+        else if (wezel.getWartosc() > pomoc1.getWartosc())
+            pomoc1.setpSyn(wezel);
         else
-            wezel.setWartosc(wartosc);
+            korzen = wezel;
 
-        if (isRed(wezel.getpSyn()) == true && isRed(wezel.getlSyn()) == false)
-            wezel = rotacjaLewo(wezel);
-
-        if (isRed(wezel.getlSyn()) == true && isRed(wezel.getlSyn().getlSyn()) == true)
-            wezel = rotacjaPrawo(wezel);
-
-        if (isRed(wezel.getlSyn()) == true && isRed(wezel.getpSyn()) == true)
-            kolory(wezel);
-
-        wezel.setRozmiar(rozmiar(wezel.getpSyn()) + rozmiar(wezel.getlSyn()));
-
-        return wezel;
-
-    }
-
-
-    private WezelDrzewo rotacjaLewo(WezelDrzewo w) {
-
-        WezelDrzewo x = w.getpSyn();
-        w.setpSyn(x.getlSyn());
-        x.setlSyn(w);
-        x.setColor(w.getColor());
-        w.setColor(czerwony);
-        return x;
-
-    }
-
-    private WezelDrzewo rotacjaPrawo(WezelDrzewo w) {
-
-        WezelDrzewo x = w.getlSyn();
-        w.setlSyn(x.getpSyn());
-        x.setpSyn(w);
-        x.setColor(w.getColor());
-        w.setColor(czerwony);
-        return x;
-
-    }
-
-    private void kolory(WezelDrzewo wezel) {
-
-        if (wezel.getColor() == czerwony)
+        if (wezel.getOjciec() == null) {
             wezel.setColor(czarny);
-        else
-            wezel.setColor(czerwony);
+            return;
+        }
 
-        if (wezel.getlSyn().getColor() == czerwony)
-            wezel.getlSyn().setColor(czarny);
-        else
-            wezel.getlSyn().setColor(czerwony);
-
-        if (wezel.getpSyn().getColor() == czerwony)
-            wezel.getpSyn().setColor(czarny);
-        else
-            wezel.getpSyn().setColor(czerwony);
-
-    }
-
-    private boolean isNull(WezelDrzewo wezel) {
-
-        if (wezel == null)
-            return true;
-        else
-            return false;
-
-    }
-
-    public void wypisz(WezelDrzewo wezel) {
-
-        if (wezel == null)
+        if (wezel.getOjciec().getOjciec() == null)
             return;
 
-        System.out.println(((wezel.getColor() == czerwony) ? "Color: Red " : "Color: Black ") + " " + "Wartosc: " + wezel.getWartosc());
-        wypisz(wezel.getlSyn());
-        wypisz(wezel.getpSyn());
+        //odnowDrzewo();
+
 
     }
 
