@@ -91,10 +91,44 @@ public class Drzewo {
         if (wezel.getOjciec().getOjciec() == null)
             return;
 
-        //odnowDrzewo();
-
 
     }
 
+    public void wypiszPreorder(WezelDrzewo wezel) {
+
+        if (wezel != straznik) {
+
+            System.out.println(wezel.getWartosc());
+            wypiszPreorder(wezel.getlSyn());
+            wypiszPreorder(wezel.getpSyn());
+
+        }
+
+    }
+
+    public void wypiszInorder(WezelDrzewo wezel) {
+
+        if (wezel != straznik) {
+
+            wypiszInorder(wezel.getlSyn());
+            System.out.println(wezel.getWartosc());
+            wypiszInorder(wezel.getpSyn());
+
+        }
+
+    }
+
+    public WezelDrzewo szukaj(WezelDrzewo wezel, int wartosc) {
+
+        if (wezel == straznik || wezel.getWartosc() == wartosc)
+            return wezel;
+
+        else if (wezel.getWartosc() < wartosc)
+            return szukaj(wezel.getlSyn(), wartosc);
+
+        else
+            return szukaj(wezel.getpSyn(), wartosc);
+
+    }
 
 }
