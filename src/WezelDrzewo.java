@@ -19,6 +19,11 @@ public class WezelDrzewo {
 
     public WezelDrzewo() {
 
+        color = 0;
+        lSyn = null;
+        pSyn = null;
+        wartosc = 0;
+
     }
 
     public void setWartosc(int wartosc) {

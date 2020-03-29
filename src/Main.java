@@ -13,7 +13,7 @@ public class Main {
         drzewo.dodajDrzewo(11);
         drzewo.dodajDrzewo(22);
 
-        drzewo.wypiszPreorder(drzewo.korzen);
+        drzewo.wypiszPreorder(drzewo.getKorzen());
 
 
     }
