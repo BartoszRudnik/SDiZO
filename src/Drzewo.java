@@ -261,4 +261,149 @@ public class Drzewo {
 
     }
 
+    private WezelDrzewo minWezel(WezelDrzewo wezel) {
+
+        WezelDrzewo pomoc = wezel;
+
+        while (pomoc.getlSyn() != null) {
+            pomoc = pomoc.getlSyn();
+        }
+
+        return pomoc;
+
+    }
+
+    private WezelDrzewo nastepnik(WezelDrzewo wezel) {
+
+        if (wezel.getpSyn() != null) {
+            return minWezel(wezel.getpSyn());
+        }
+
+        WezelDrzewo pomoc = wezel.getOjciec();
+
+        while (pomoc != null && wezel == pomoc.getpSyn()) {
+            wezel = pomoc;
+            pomoc = pomoc.getOjciec();
+        }
+
+        return pomoc;
+
+    }
+
+    public WezelDrzewo usunDrzewo(WezelDrzewo wezel, int wartosc) {
+
+        WezelDrzewo pomoc1 = new WezelDrzewo();
+        WezelDrzewo pomoc2 = new WezelDrzewo();
+
+        if (wezel.getlSyn() == straznik || wezel.getpSyn() == straznik) {
+            pomoc1 = wezel;
+        } else {
+            pomoc1 = nastepnik(wezel);
+        }
+
+        if (pomoc1.getlSyn() != straznik) {
+            pomoc2 = pomoc1.getlSyn();
+        } else {
+            pomoc2 = pomoc1.getpSyn();
+        }
+
+        pomoc2.setOjciec(pomoc1.getOjciec());
+
+        if (pomoc1.getOjciec() == straznik) {
+            korzen = pomoc2;
+        } else if (pomoc1 == pomoc1.getOjciec().getlSyn()) {
+            pomoc1.getOjciec().setlSyn(pomoc2);
+        } else {
+            pomoc1.getOjciec().setpSyn(pomoc2);
+        }
+
+        if (pomoc1 != wezel) {
+            wezel.setWartosc(pomoc1.getWartosc());
+        }
+
+        if (pomoc1.getColor() == czarny) {
+            usunOdnow(pomoc2);
+        }
+
+        return pomoc1;
+
+    }
+
+    private void usunOdnow(WezelDrzewo wezel) {
+
+        WezelDrzewo pomoc = null;
+
+        while (wezel != korzen && wezel.getColor() == czarny) {
+
+            if (wezel == wezel.getOjciec().getlSyn()) {
+
+                pomoc = wezel.getOjciec().getpSyn();
+
+                if (pomoc.getColor() == czerwony) {
+                    pomoc.setColor(czarny);
+                    wezel.getOjciec().setColor(czerwony);
+                    rotacjaLewo(wezel.getOjciec());
+                    pomoc = wezel.getOjciec().getpSyn();
+                }
+
+
+                if (pomoc.getlSyn().getColor() == czarny && pomoc.getpSyn().getColor() == czarny) {
+                    pomoc.setColor(czerwony);
+                    wezel = wezel.getOjciec();
+                } else {
+
+                    if (pomoc.getpSyn().getColor() == czarny) {
+                        pomoc.getlSyn().setColor(czarny);
+                        pomoc.setColor(czerwony);
+                        rotacjaPrawo(pomoc);
+                        pomoc = pomoc.getOjciec().getpSyn();
+                    }
+
+                    pomoc.setColor(wezel.getOjciec().getColor());
+                    wezel.getOjciec().setColor(czarny);
+                    pomoc.getpSyn().setColor(czarny);
+                    rotacjaLewo(wezel.getOjciec());
+                    wezel = korzen;
+
+                }
+
+            } else {
+
+                pomoc = wezel.getOjciec().getlSyn();
+
+                if (pomoc.getColor() == czerwony) {
+                    pomoc.setColor(czarny);
+                    wezel.getOjciec().setColor(czerwony);
+                    rotacjaPrawo(wezel.getOjciec());
+                    pomoc = wezel.getOjciec().getlSyn();
+                }
+
+
+                if (pomoc.getpSyn().getColor() == czarny && pomoc.getlSyn().getColor() == czarny) {
+                    pomoc.setColor(czerwony);
+                    wezel = wezel.getOjciec();
+                } else {
+
+                    if (pomoc.getlSyn().getColor() == czarny) {
+                        pomoc.getpSyn().setColor(czarny);
+                        pomoc.setColor(czerwony);
+                        rotacjaLewo(pomoc);
+                        pomoc = pomoc.getOjciec().getlSyn();
+                    }
+
+                    pomoc.setColor(wezel.getOjciec().getColor());
+                    wezel.getOjciec().setColor(czarny);
+                    pomoc.getlSyn().setColor(czarny);
+                    rotacjaPrawo(wezel.getOjciec());
+                    wezel = korzen;
+
+                }
+
+            }
+
+            wezel.setColor(czarny);
+
+        }
+    }
+
 }

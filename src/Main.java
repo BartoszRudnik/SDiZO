@@ -12,10 +12,10 @@ public class Main {
         drzewo.dodajDrzewo(2);
         drzewo.dodajDrzewo(1);
 
+        drzewo.usunDrzewo(drzewo.getKorzen(), 5);
+
         drzewo.wypiszPreorder(drzewo.getKorzen());
-
         System.out.println();
-
         drzewo.wydrukuj(drzewo.getKorzen(), "", true);
 
     }
