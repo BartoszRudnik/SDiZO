@@ -4,17 +4,19 @@ public class Main {
 
         Drzewo drzewo = new Drzewo();
 
-        drzewo.dodajDrzewo(31);
-        drzewo.dodajDrzewo(412);
-        drzewo.dodajDrzewo(516);
-        drzewo.dodajDrzewo(77);
-        drzewo.dodajDrzewo(91);
-        drzewo.dodajDrzewo(710);
-        drzewo.dodajDrzewo(11);
-        drzewo.dodajDrzewo(22);
+        drzewo.dodajDrzewo(7);
+        drzewo.dodajDrzewo(6);
+        drzewo.dodajDrzewo(5);
+        drzewo.dodajDrzewo(4);
+        drzewo.dodajDrzewo(3);
+        drzewo.dodajDrzewo(2);
+        drzewo.dodajDrzewo(1);
 
         drzewo.wypiszPreorder(drzewo.getKorzen());
 
+        System.out.println();
+
+        drzewo.wydrukuj(drzewo.getKorzen(), "", true);
 
     }
 

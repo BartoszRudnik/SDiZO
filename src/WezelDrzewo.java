@@ -6,25 +6,16 @@ public class WezelDrzewo {
     private WezelDrzewo pSyn;
     private int color;
 
-
     public WezelDrzewo(int wartosc) {
 
         this.wartosc = wartosc;
-        ojciec = null;
-        lSyn = null;
-        pSyn = null;
-        color = 1;
 
     }
 
     public WezelDrzewo() {
 
-        color = 0;
-        lSyn = null;
-        pSyn = null;
-        wartosc = 0;
-
     }
+
 
     public void setWartosc(int wartosc) {
         this.wartosc = wartosc;
