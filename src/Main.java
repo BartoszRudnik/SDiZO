@@ -15,8 +15,8 @@ public class Main {
         drzewo.usunDrzewo(drzewo.getKorzen(), 5);
 
         drzewo.wypiszPreorder(drzewo.getKorzen());
-        System.out.println();
-        drzewo.wydrukuj(drzewo.getKorzen(), "", true);
+
+        //drzewo.wydrukuj(drzewo.getKorzen(),"",true);
 
     }
 

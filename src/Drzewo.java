@@ -5,8 +5,6 @@ public class Drzewo {
 
     private static final int czerwony = 1;
     private static final int czarny = 0;
-    int rozmiar = 0;
-
 
     public Drzewo() {
 
@@ -66,8 +64,6 @@ public class Drzewo {
     public final void dodajDrzewo(int wartosc) {
 
         WezelDrzewo wezel = new WezelDrzewo(wartosc);
-
-        rozmiar++;
 
         wezel.setOjciec(null);
         wezel.setColor(czerwony);
@@ -183,7 +179,7 @@ public class Drzewo {
 
         if (wezel != straznik) {
 
-            System.out.println(wezel.getWartosc() + wezel.getColor());
+            System.out.println(wezel.getWartosc());
             wypiszPreorder(wezel.getlSyn());
             wypiszPreorder(wezel.getpSyn());
 
@@ -265,7 +261,7 @@ public class Drzewo {
 
         WezelDrzewo pomoc = wezel;
 
-        while (pomoc.getlSyn() != null) {
+        while (pomoc.getlSyn() != straznik && pomoc != straznik) {
             pomoc = pomoc.getlSyn();
         }
 
@@ -275,33 +271,48 @@ public class Drzewo {
 
     private WezelDrzewo nastepnik(WezelDrzewo wezel) {
 
-        if (wezel.getpSyn() != null) {
+        if (wezel.getpSyn() != null && wezel != straznik) {
             return minWezel(wezel.getpSyn());
         }
 
         WezelDrzewo pomoc = wezel.getOjciec();
 
-        while (pomoc != null && wezel == pomoc.getpSyn()) {
+        while (pomoc != null && pomoc != straznik && wezel == pomoc.getpSyn()) {
             wezel = pomoc;
-            pomoc = pomoc.getOjciec();
+            pomoc = wezel.getOjciec();
         }
 
         return pomoc;
 
     }
 
-    public WezelDrzewo usunDrzewo(WezelDrzewo wezel, int wartosc) {
+    public void usunDrzewo(WezelDrzewo wezel, int wartosc) {
 
-        WezelDrzewo pomoc1 = new WezelDrzewo();
-        WezelDrzewo pomoc2 = new WezelDrzewo();
+        WezelDrzewo pomoc = null;
+        WezelDrzewo pomoc1;
+        WezelDrzewo pomoc2;
 
-        if (wezel.getlSyn() == straznik || wezel.getpSyn() == straznik) {
-            pomoc1 = wezel;
-        } else {
-            pomoc1 = nastepnik(wezel);
+        while (wezel != straznik) {
+
+            if (wezel.getWartosc() == wartosc)
+                pomoc = wezel;
+            else if (wezel.getWartosc() <= wartosc)
+                wezel = wezel.getlSyn();
+            else
+                wezel = wezel.getpSyn();
+
         }
 
-        if (pomoc1.getlSyn() != straznik) {
+        if (pomoc == null || pomoc == straznik)
+            return;
+
+        if (pomoc.getlSyn() == straznik || pomoc.getpSyn() == straznik) {
+            pomoc1 = pomoc;
+        } else {
+            pomoc1 = nastepnik(pomoc);
+        }
+
+        if (pomoc1.getlSyn() != straznik && pomoc1.getlSyn() != null) {
             pomoc2 = pomoc1.getlSyn();
         } else {
             pomoc2 = pomoc1.getpSyn();
@@ -309,23 +320,23 @@ public class Drzewo {
 
         pomoc2.setOjciec(pomoc1.getOjciec());
 
-        if (pomoc1.getOjciec() == straznik) {
+        if (pomoc1.getOjciec() == null) {
             korzen = pomoc2;
-        } else if (pomoc1 == pomoc1.getOjciec().getlSyn()) {
-            pomoc1.getOjciec().setlSyn(pomoc2);
         } else {
-            pomoc1.getOjciec().setpSyn(pomoc2);
+            if (pomoc1 == pomoc1.getOjciec().getlSyn()) {
+                pomoc1.getOjciec().setlSyn(pomoc2);
+            } else {
+                pomoc1.getOjciec().setpSyn(pomoc2);
+            }
         }
 
-        if (pomoc1 != wezel) {
-            wezel.setWartosc(pomoc1.getWartosc());
+        if (pomoc1 != pomoc) {
+            pomoc.setWartosc(pomoc1.getWartosc());
         }
 
         if (pomoc1.getColor() == czarny) {
             usunOdnow(pomoc2);
         }
-
-        return pomoc1;
 
     }
 
