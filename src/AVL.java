@@ -1,6 +1,12 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class AVL {
 
     WezelAvl korzen;
+
+    List<Integer> zapisPlik = new ArrayList<Integer>();
 
     private int wysokosc(WezelAvl wezel) {
         if (wezel == null)
@@ -32,12 +38,22 @@ public class AVL {
 
     }
 
-    public void wypiszAVL(WezelAvl wezel) {
+    public void wypiszPreorder(WezelAvl wezel) {
 
         if (wezel != null) {
             System.out.println(wezel.getWartosc());
-            wypiszAVL(wezel.getlSyn());
-            wypiszAVL(wezel.getpSyn());
+            wypiszPreorder(wezel.getlSyn());
+            wypiszPreorder(wezel.getpSyn());
+        }
+
+    }
+
+    public void wypiszInorder(WezelAvl wezel) {
+
+        if (wezel != null) {
+            wypiszInorder(wezel.getlSyn());
+            System.out.println(wezel.getWartosc());
+            wypiszInorder(wezel.getpSyn());
         }
 
     }
@@ -215,6 +231,69 @@ public class AVL {
         }
 
         System.out.println(max);
+
+    }
+
+    private void zapisPlik(WezelAvl wezel) {
+
+        if (wezel != null) {
+            zapisPlik.add(wezel.getWartosc());
+            zapisPlik(wezel.getlSyn());
+            zapisPlik(wezel.getpSyn());
+        }
+
+    }
+
+    public void wczytajAVL(String nazwaPliku) {
+
+        try {
+            FileInputStream fstream = new FileInputStream(nazwaPliku);
+            BufferedReader br = new BufferedReader((new InputStreamReader(fstream)));
+
+            String line;
+            int rozmiarPliku = 0;
+
+            if ((line = br.readLine()) != null) {
+                rozmiarPliku = Integer.parseInt(line);
+            }
+
+            for (int i = 0; i < rozmiarPliku; i++) {
+
+                if ((line = br.readLine()) != null) {
+                    korzen = dodaj(korzen, Integer.parseInt(line));
+                }
+
+            }
+
+            fstream.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void zapiszAvl(String nazwaPliku) {
+
+        try {
+
+            BufferedWriter bw = new BufferedWriter(new FileWriter(nazwaPliku));
+
+            zapisPlik(korzen);
+
+            bw.write(Integer.toString(zapisPlik.size()));
+            bw.newLine();
+
+            for (int i = 0; i < zapisPlik.size(); i++) {
+                bw.write(Integer.toString((Integer) zapisPlik.get(i)));
+                bw.newLine();
+            }
+
+            bw.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
