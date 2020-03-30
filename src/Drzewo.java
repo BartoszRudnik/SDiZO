@@ -4,7 +4,7 @@ public class Drzewo {
     private WezelDrzewo straznik;
 
     private int czerwony = 1;
-    private int czarny = 0;
+    private int czarny;
 
     public Drzewo() {
 
@@ -288,20 +288,21 @@ public class Drzewo {
 
     }
 
-    public void usunDrzewo(WezelDrzewo wezel, int wartosc) {
+    public void usunDrzewo(int wartosc) {
 
-        WezelDrzewo pomoc = null;
+        WezelDrzewo wezel = korzen;
+        WezelDrzewo pomoc = straznik;
         WezelDrzewo pomoc1;
-        WezelDrzewo pomoc2;
 
         while (wezel != straznik) {
 
-            if (wezel.getWartosc() == wartosc)
+            if (wezel.getWartosc() == wartosc) {
                 pomoc = wezel;
-            else if (wezel.getWartosc() <= wartosc)
-                wezel = wezel.getlSyn();
-            else
+                break;
+            } else if (wezel.getWartosc() < wartosc)
                 wezel = wezel.getpSyn();
+            else
+                wezel = wezel.getlSyn();
 
         }
 
@@ -313,7 +314,7 @@ public class Drzewo {
         if (wezel.getlSyn() == straznik) {
             pomoc1 = wezel.getpSyn();
             zamien(wezel, wezel.getpSyn());
-        } else if (wezel.getlSyn() == straznik) {
+        } else if (wezel.getpSyn() == straznik) {
             pomoc1 = wezel.getlSyn();
             zamien(wezel, wezel.getlSyn());
         } else {
@@ -321,7 +322,7 @@ public class Drzewo {
             Kolor = pomoc.getColor();
             pomoc1 = pomoc.getpSyn();
             if (pomoc.getOjciec() == wezel) {
-                pomoc1.setOjciec(wezel);
+                pomoc1.setOjciec(pomoc);
             } else {
                 zamien(pomoc, pomoc.getpSyn());
                 pomoc.setpSyn(wezel.getpSyn());
