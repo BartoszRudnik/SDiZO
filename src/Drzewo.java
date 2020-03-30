@@ -1,3 +1,7 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Drzewo {
 
     private WezelDrzewo korzen;
@@ -5,6 +9,9 @@ public class Drzewo {
 
     private int czerwony = 1;
     private int czarny;
+
+    List<Integer> zapisPlik = new ArrayList<Integer>();
+    private int rozmiar = 1;
 
     public Drzewo() {
 
@@ -66,6 +73,8 @@ public class Drzewo {
     public final void dodajDrzewo(int wartosc) {
 
         WezelDrzewo wezel = new WezelDrzewo(wartosc);
+
+        rozmiar++;
 
         wezel.setOjciec(null);
         wezel.setColor(czerwony);
@@ -423,6 +432,68 @@ public class Drzewo {
         else
             a.getOjciec().setpSyn(b);
         b.setOjciec(a.getOjciec());
+
+    }
+
+    private void zapisPlik(WezelDrzewo wezel) {
+
+        if (wezel != straznik) {
+
+            zapisPlik.add(wezel.getWartosc());
+            zapisPlik(wezel.getlSyn());
+            zapisPlik(wezel.getpSyn());
+
+        }
+
+    }
+
+    public void wczytajDrzewo(String nazwaPliku) {
+
+        try {
+            FileInputStream fstream = new FileInputStream(nazwaPliku);
+            BufferedReader br = new BufferedReader((new InputStreamReader(fstream)));
+
+            String line;
+            int rozmiarPliku = 0;
+
+            if ((line = br.readLine()) != null) {
+                rozmiarPliku = Integer.parseInt(line);
+            }
+
+            for (int i = 0; i < rozmiarPliku; i++) {
+                if ((line = br.readLine()) != null)
+                    dodajDrzewo(Integer.parseInt(line));
+            }
+
+            fstream.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void zapiszDrzewo(String nazwaPliku) {
+
+        try {
+
+            BufferedWriter bw = new BufferedWriter(new FileWriter(nazwaPliku));
+
+            zapisPlik(getKorzen());
+
+            bw.write(Integer.toString(zapisPlik.size()));
+            bw.newLine();
+
+            for (int i = 0; i < zapisPlik.size(); i++) {
+                bw.write(Integer.toString((Integer) zapisPlik.get(i)));
+                bw.newLine();
+            }
+
+            bw.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
