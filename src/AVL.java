@@ -6,7 +6,7 @@ public class AVL {
 
     WezelAvl korzen;
 
-    List<Integer> zapisPlik = new ArrayList<Integer>();
+    private List<Integer> zapisPlik = new ArrayList<Integer>();
 
     private int wysokosc(WezelAvl wezel) {
         if (wezel == null)
@@ -293,6 +293,39 @@ public class AVL {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+    }
+
+    private void odwrotneInorder(WezelAvl wezel) {
+
+        if (wezel != null) {
+
+            odwrotneInorder(wezel.getpSyn());
+            System.out.println(wezel.getWartosc());
+            odwrotneInorder(wezel.getlSyn());
+
+        }
+
+    }
+
+    public void wydrukuj(WezelAvl wezel, String przerwa, boolean l) {
+
+        if (wezel != null) {
+
+            System.out.print(przerwa);
+            if (wezel != korzen && l == true) {
+                System.out.print("P----");
+                przerwa += "    ";
+            } else if (wezel != korzen) {
+                System.out.print("L----");
+                przerwa += "    ";
+            }
+
+            System.out.println(wezel.getWartosc());
+            wydrukuj(wezel.getlSyn(), przerwa, false);
+            wydrukuj(wezel.getpSyn(), przerwa, true);
+
         }
 
     }

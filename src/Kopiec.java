@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Arrays;
 
 public class Kopiec {
 
@@ -238,6 +239,36 @@ public class Kopiec {
         }
 
         return min;
+
+    }
+
+    private int log2(int x) {
+        return (int) (Math.log(x) / Math.log(2));
+    }
+
+    private String stringOfSize(int size, char ch) {
+        char[] a = new char[size];
+        Arrays.fill(a, ch);
+        return new String(a);
+    }
+
+    public void wydrukuj() {
+
+        int wysokosc = log2(getRozmiar()) + 1;
+
+        for (int i = 1; i < getRozmiar(); i++) {
+            int x = kopiec[i];
+            int level = log2(i) + 1;
+            int spaces = (wysokosc - level + 1) * 2;
+
+            System.out.print(stringOfSize(spaces, ' '));
+            System.out.print(x);
+
+            if ((int) Math.pow(2, level) - 1 == i)
+                System.out.println();
+
+        }
+
 
     }
 
