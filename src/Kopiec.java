@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.Arrays;
 
 public class Kopiec {
 
@@ -240,16 +239,6 @@ public class Kopiec {
 
         return min;
 
-    }
-
-    private int log2(int x) {
-        return (int) (Math.log(x) / Math.log(2));
-    }
-
-    private String stringOfSize(int size, char ch) {
-        char[] a = new char[size];
-        Arrays.fill(a, ch);
-        return new String(a);
     }
 
     public void wydrukuj(int v, String przerwa, boolean l) {

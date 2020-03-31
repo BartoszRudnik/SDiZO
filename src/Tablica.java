@@ -175,7 +175,10 @@ public class Tablica {
     }
 
     public void znajdzPozycja(int pozycja) {
-        System.out.println(tablica[pozycja]);
+        if (pozycja < getPojemnosc())
+            System.out.println(tablica[pozycja]);
+        else
+            System.out.println("Zla pozycja");
     }
 
     public void wyswietlTablica() {
