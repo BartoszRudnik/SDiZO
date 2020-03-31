@@ -252,28 +252,7 @@ public class Kopiec {
         return new String(a);
     }
 
-    public void wydrukuj() {
-
-        int wysokosc = log2(getRozmiar()) + 1;
-
-        for (int i = 1; i < getRozmiar(); i++) {
-            int x = kopiec[i];
-            int level = log2(i) + 1;
-            int spaces = (wysokosc - level + 1) * 2;
-
-            System.out.print(stringOfSize(spaces, ' '));
-            System.out.print(x);
-
-            if ((int) Math.pow(2, level) - 1 == i)
-                System.out.println();
-
-        }
-
-
-    }
-
-    public void wydrukuj2(int v, String przerwa, boolean l) {
-
+    public void wydrukuj(int v, String przerwa, boolean l) {
 
         if (v < getRozmiar()) {
 
@@ -288,8 +267,8 @@ public class Kopiec {
                 przerwa += "    ";
 
             System.out.println(kopiec[v]);
-            wydrukuj2(indexLDziecko(v), przerwa, false);
-            wydrukuj2(indexPDziecko(v), przerwa, true);
+            wydrukuj(indexLDziecko(v), przerwa, false);
+            wydrukuj(indexPDziecko(v), przerwa, true);
 
         }
 
