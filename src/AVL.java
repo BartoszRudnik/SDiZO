@@ -320,7 +320,8 @@ public class AVL {
             } else if (wezel != korzen) {
                 System.out.print("L----");
                 przerwa += "    ";
-            }
+            } else
+                przerwa += "    ";
 
             System.out.println(wezel.getWartosc());
             wydrukuj(wezel.getlSyn(), przerwa, false);

@@ -257,7 +257,8 @@ public class Drzewo {
             } else if (wezel != korzen) {
                 System.out.print("L----");
                 przerwa += "    ";
-            }
+            } else
+                przerwa += "    ";
 
             String color = wezel.getColor() == 0 ? "Czarny" : "Czerwony";
             System.out.println(wezel.getWartosc() + " " + color);

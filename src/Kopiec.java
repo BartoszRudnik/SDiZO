@@ -272,4 +272,27 @@ public class Kopiec {
 
     }
 
+    public void wydrukuj2(int v, String przerwa, boolean l) {
+
+
+        if (v < getRozmiar()) {
+
+            System.out.print(przerwa);
+            if (v > 1 && l == true) {
+                System.out.print("P----");
+                przerwa += "    ";
+            } else if (v > 1) {
+                System.out.print("L----");
+                przerwa += "    ";
+            } else
+                przerwa += "    ";
+
+            System.out.println(kopiec[v]);
+            wydrukuj2(indexLDziecko(v), przerwa, false);
+            wydrukuj2(indexPDziecko(v), przerwa, true);
+
+        }
+
+    }
+
 }
