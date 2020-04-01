@@ -47,18 +47,16 @@ public class Dane {
 
         try {
 
-            BufferedWriter bw = new BufferedWriter(new FileWriter(nazwa));
-
-            bw.write(Integer.toString(tab.length));
-            bw.newLine();
+            BufferedWriter bw = new BufferedWriter(new FileWriter(nazwa, true));
 
             for (int i = 0; i < tab.length; i++) {
                 bw.write(Long.toString(tab[i]));
                 bw.newLine();
             }
 
+            bw.newLine();
+            bw.newLine();
             bw.close();
-
 
         } catch (IOException e) {
             e.printStackTrace();
