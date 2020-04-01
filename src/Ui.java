@@ -51,7 +51,7 @@ public class Ui {
                     break;
 
                 default:
-                    System.out.println("Wybrales zly numer.");
+                    System.out.println("Wybrano zly numer.");
                     break;
 
             }

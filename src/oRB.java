@@ -23,9 +23,12 @@ public class oRB {
             System.out.println("8. Najmniejsza wartosc");
             System.out.println("9. Wczytaj dane z pliku tekstowego");
             System.out.println("10. Zapisz dane do pliku tekstowego");
+            System.out.println("11. Wyczysc drzewo RB");
             System.out.println("0. Cofnij do menu glownego");
 
             int nrOperacji = scanner.nextInt();
+
+            System.out.println();
 
             int wartosc = 0;
             String nazwa;
@@ -40,38 +43,46 @@ public class oRB {
                     System.out.print("Podaj wartosc: ");
                     wartosc = scanner.nextInt();
                     drzewo.dodajDrzewo(wartosc);
+                    System.out.println();
                     break;
 
                 case 2:
                     System.out.print("Podaj wartosc: ");
                     wartosc = scanner.nextInt();
                     drzewo.usunDrzewo(wartosc);
+                    System.out.println();
                     break;
 
                 case 3:
                     drzewo.wypiszPreorder(drzewo.getKorzen());
+                    System.out.println();
                     break;
 
                 case 4:
                     drzewo.wypiszInorder(drzewo.getKorzen());
+                    System.out.println();
                     break;
 
                 case 5:
                     System.out.print("Podaj szukana wartosc: ");
                     wartosc = scanner.nextInt();
                     drzewo.sprawdz(drzewo.getKorzen(), wartosc);
+                    System.out.println();
                     break;
 
                 case 6:
                     drzewo.wydrukuj(drzewo.getKorzen(), "", true);
+                    System.out.println();
                     break;
 
                 case 7:
                     drzewo.maximum(drzewo.getKorzen());
+                    System.out.println();
                     break;
 
                 case 8:
                     drzewo.minimum(drzewo.getKorzen());
+                    System.out.println();
                     break;
 
                 case 9:
@@ -79,6 +90,7 @@ public class oRB {
                     System.out.print("Podaj nazwe pliku:");
                     nazwa = scanner.nextLine();
                     drzewo.wczytajDrzewo(nazwa);
+                    System.out.println();
                     break;
 
                 case 10:
@@ -86,10 +98,17 @@ public class oRB {
                     System.out.print("Podaj nazwe pliku:");
                     nazwa = scanner.nextLine();
                     drzewo.zapiszDrzewo(nazwa);
+                    System.out.println();
+                    break;
+
+                case 11:
+                    drzewo = new Drzewo();
+                    System.out.println();
                     break;
 
                 default:
                     System.out.println("Podano zly numer!");
+                    System.out.println();
                     break;
 
             }

@@ -528,4 +528,16 @@ public class Drzewo {
 
     }
 
+    public void wyczysc(WezelDrzewo wezel) {
+
+        if (wezel != straznik || wezel != null) {
+
+            wyczysc(wezel.getlSyn());
+            wyczysc(wezel.getpSyn());
+            usunDrzewo(wezel.getWartosc());
+
+        }
+
+    }
+
 }

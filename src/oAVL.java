@@ -23,9 +23,12 @@ public class oAVL {
             System.out.println("8. Sprawdz czy istnieje element o podanej wartosci");
             System.out.println("9. Wczytaj dane z pliku tekstowego");
             System.out.println("10. Zapisz dane do pliku tekstowego");
+            System.out.println("11. Wyczysc drzewo AVL");
             System.out.println("0. Cofnij do menu glownego");
 
             int nrOperacji = scanner.nextInt();
+
+            System.out.println();
 
             int wartosc = 0;
             String nazwa;
@@ -40,38 +43,46 @@ public class oAVL {
                     System.out.print("Podaj wartosc: ");
                     wartosc = scanner.nextInt();
                     avl.korzen = avl.dodaj(avl.korzen, wartosc);
+                    System.out.println();
                     break;
 
                 case 2:
                     System.out.print("Podaj wartosc: ");
                     wartosc = scanner.nextInt();
                     avl.korzen = avl.usun(avl.korzen, wartosc);
+                    System.out.println();
                     break;
 
                 case 3:
                     avl.wypiszPreorder(avl.korzen);
+                    System.out.println();
                     break;
 
                 case 4:
                     avl.wypiszInorder(avl.korzen);
+                    System.out.println();
                     break;
 
                 case 5:
                     avl.wydrukuj(avl.korzen, "", true);
+                    System.out.println();
                     break;
 
                 case 6:
                     avl.AvlMax(avl.korzen);
+                    System.out.println();
                     break;
 
                 case 7:
                     avl.AvlMin(avl.korzen);
+                    System.out.println();
                     break;
 
                 case 8:
                     System.out.print("Podaj wartosc: ");
                     wartosc = scanner.nextInt();
                     avl.sprawdz(avl.korzen, wartosc);
+                    System.out.println();
                     break;
 
                 case 9:
@@ -79,6 +90,7 @@ public class oAVL {
                     System.out.print("Podaj nazwe pliku: ");
                     nazwa = scanner.nextLine();
                     avl.wczytajAVL(nazwa);
+                    System.out.println();
                     break;
 
                 case 10:
@@ -86,10 +98,18 @@ public class oAVL {
                     System.out.print("Podaj nazwe pliku: ");
                     nazwa = scanner.nextLine();
                     avl.zapiszAvl(nazwa);
+                    System.out.println();
+                    break;
+
+                case 11:
+                    avl.wyczysc(avl.korzen);
+                    avl = new AVL();
+                    System.out.println();
                     break;
 
                 default:
                     System.out.println("Podano zly numer!");
+                    System.out.println();
                     break;
 
             }

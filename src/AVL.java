@@ -353,4 +353,16 @@ public class AVL {
 
     }
 
+    public void wyczysc(WezelAvl wezel) {
+
+        if (wezel != null) {
+
+            usun(korzen, wezel.getWartosc());
+            wyczysc(wezel.getlSyn());
+            wyczysc(wezel.getpSyn());
+
+        }
+
+    }
+
 }

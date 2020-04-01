@@ -248,7 +248,7 @@ public class Kopiec {
 
     public void wydrukuj(int v, String przerwa, boolean l) {
 
-        if (v < getRozmiar()) {
+        if (v < rozmiar && v > 0) {
 
             System.out.print(przerwa);
             if (v > 1 && l == true) {
@@ -265,6 +265,7 @@ public class Kopiec {
             wydrukuj(indexPDziecko(v), przerwa, true);
 
         }
+
 
     }
 

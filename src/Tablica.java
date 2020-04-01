@@ -264,4 +264,12 @@ public class Tablica {
 
     }
 
+    public void wyczysc() {
+
+        while (index > 0) {
+            usunKoniec();
+        }
+
+    }
+
 }

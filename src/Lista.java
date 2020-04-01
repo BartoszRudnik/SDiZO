@@ -299,4 +299,15 @@ public class Lista {
 
     }
 
+    public void wyczysc() {
+
+        int rozmiar = rozmiarListy();
+
+        while (rozmiar > 0) {
+            usunKoniec();
+            rozmiar--;
+        }
+
+    }
+
 }
