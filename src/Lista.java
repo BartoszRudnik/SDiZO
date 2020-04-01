@@ -253,7 +253,7 @@ public class Lista {
 
     }
 
-    public int maxLista() {
+    public void maxLista() {
 
         WezelLista wezel = glowa;
 
@@ -271,11 +271,11 @@ public class Lista {
 
         }
 
-        return max;
+        System.out.println(max);
 
     }
 
-    public int minLista() {
+    public void minLista() {
 
         WezelLista wezel = glowa;
 
@@ -295,7 +295,7 @@ public class Lista {
 
         }
 
-        return min;
+        System.out.println(min);
 
     }
 

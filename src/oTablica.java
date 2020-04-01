@@ -4,11 +4,13 @@ public class oTablica {
 
     Tablica tablica = new Tablica();
 
+    private boolean proces = true;
+
+    Scanner scanner = new Scanner(System.in);
+
     public void operacjeTablica() {
 
-        Scanner scanner = new Scanner(System.in);
-
-        while (true) {
+        while (proces) {
 
             System.out.println("Podaj numer operacji, ktora chcesz wykonac");
             System.out.println("1. Dodaj wartosc na poczatek tablicy");
@@ -33,6 +35,7 @@ public class oTablica {
             switch (nrOperacji) {
 
                 case 0:
+                    proces = false;
                     break;
 
                 case 1:
@@ -80,12 +83,14 @@ public class oTablica {
                     break;
 
                 case 9:
+                    scanner.nextLine();
                     System.out.println("Podaj nazwe pliku: ");
                     nazwa = scanner.nextLine();
                     tablica.wczytajTablica(nazwa);
                     break;
 
                 case 10:
+                    scanner.nextLine();
                     System.out.println("Podaj nazwe pliku: ");
                     nazwa = scanner.nextLine();
                     tablica.zapiszTablica(nazwa);

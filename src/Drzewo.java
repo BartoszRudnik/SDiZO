@@ -227,21 +227,49 @@ public class Drzewo {
 
     }
 
-    public int maximum(WezelDrzewo wezel) {
+    public void sprawdz(WezelDrzewo wezel, int wartosc) {
+
+        boolean spr = false;
+
+        if (wezel != straznik && wezel != null) {
+
+            if (wezel.getWartosc() == wartosc)
+                spr = true;
+            else if (wartosc < wezel.getWartosc())
+                sprawdz(wezel.getlSyn(), wartosc);
+            else
+                sprawdz(wezel.getpSyn(), wartosc);
+
+        }
+
+        if (spr)
+            System.out.println("Element o podanej wartosci znajduje sie w drzewie RB");
+        else
+            System.out.println("Element o podane wartosci nie znajduje sie w drzewie RB");
+
+    }
+
+    public void maximum(WezelDrzewo wezel) {
 
         while (wezel.getpSyn() != null)
             wezel = wezel.getpSyn();
 
-        return wezel.getWartosc();
+        if (rozmiar > 0)
+            System.out.println(wezel.getWartosc());
+        else
+            System.out.println("Drzewo jest puste");
 
     }
 
-    public int minimum(WezelDrzewo wezel) {
+    public void minimum(WezelDrzewo wezel) {
 
         while (wezel.getlSyn() != null)
             wezel = wezel.getlSyn();
 
-        return wezel.getWartosc();
+        if (rozmiar > 0) {
+            System.out.println(wezel.getWartosc());
+        } else
+            System.out.println("Drzewo jest puste");
 
     }
 
@@ -303,6 +331,8 @@ public class Drzewo {
         WezelDrzewo wezel = korzen;
         WezelDrzewo pomoc = straznik;
         WezelDrzewo pomoc1;
+
+        rozmiar--;
 
         while (wezel != straznik) {
 

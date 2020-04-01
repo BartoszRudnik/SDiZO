@@ -161,19 +161,24 @@ public class Kopiec {
 
     }
 
-    public boolean znajdzKopiec(int liczba) {
+    public void znajdzKopiec(int liczba) {
+
+        boolean sprawdz = false;
 
         int i = 1;
 
         while (i < getRozmiar()) {
 
             if (kopiec[i] == liczba)
-                return true;
+                sprawdz = true;
             i++;
 
         }
 
-        return false;
+        if (sprawdz)
+            System.out.println("Podana liczba znajduje sie w kopcu");
+        else
+            System.out.println("Podana liczba nie znajduje sie w kopcu");
 
     }
 
@@ -224,11 +229,11 @@ public class Kopiec {
 
     }
 
-    public int maxKopiec() {
-        return kopiec[1];
+    public void maxKopiec() {
+        System.out.println(kopiec[1]);
     }
 
-    public int minKopiec() {
+    public void minKopiec() {
 
         int min = kopiec[1];
 
@@ -237,7 +242,7 @@ public class Kopiec {
                 min = kopiec[i];
         }
 
-        return min;
+        System.out.println(min);
 
     }
 

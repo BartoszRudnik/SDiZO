@@ -5,6 +5,8 @@ public class Ui {
     private oLista lista = new oLista();
     private oTablica tablica = new oTablica();
     private oKopiec kopiec = new oKopiec();
+    private oRB rb = new oRB();
+    private oAVL avl = new oAVL();
 
     public void stworz() {
 
@@ -25,6 +27,7 @@ public class Ui {
             switch (nrStruktury) {
 
                 case 0:
+                    System.exit(0);
                     break;
 
                 case 1:
@@ -40,11 +43,11 @@ public class Ui {
                     break;
 
                 case 4:
-                    //operacjeRB();
+                    rb.operacjeRB();
                     break;
 
                 case 5:
-                    //operacjeAVL();
+                    avl.operacjeAVL();
                     break;
 
                 default:

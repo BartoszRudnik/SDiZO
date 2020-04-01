@@ -236,7 +236,7 @@ public class Tablica {
 
     }
 
-    public int maxTablica() {
+    public void maxTablica() {
 
         int max = tablica[0];
 
@@ -246,11 +246,11 @@ public class Tablica {
             }
         }
 
-        return max;
+        System.out.println(max);
 
     }
 
-    public int minTablica() {
+    public void minTablica() {
 
         int min = tablica[0];
 
@@ -260,7 +260,7 @@ public class Tablica {
             }
         }
 
-        return min;
+        System.out.println(min);
 
     }
 

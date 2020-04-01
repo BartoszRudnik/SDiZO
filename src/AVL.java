@@ -331,4 +331,26 @@ public class AVL {
 
     }
 
+    public void sprawdz(WezelAvl wezel, int wartosc) {
+
+        boolean sprawdz = false;
+
+        if (wezel != null) {
+
+            if (wezel.getWartosc() == wartosc)
+                sprawdz = true;
+            else if (wartosc < wezel.getWartosc())
+                sprawdz(wezel.getlSyn(), wartosc);
+            else
+                sprawdz(wezel.getpSyn(), wartosc);
+
+        }
+
+        if (sprawdz)
+            System.out.println("Element o podanej wartosci znajduje sie w drzewie AVL");
+        else
+            System.out.println("Element o podanej wartosci nie znajduje sie w drzewie AVL");
+
+    }
+
 }

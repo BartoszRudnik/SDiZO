@@ -2,13 +2,15 @@ import java.util.Scanner;
 
 public class oKopiec {
 
+    private boolean proces = true;
+
     Kopiec kopiec = new Kopiec();
+
+    Scanner scanner = new Scanner(System.in);
 
     public void operacjeKopiec() {
 
-        Scanner scanner = new Scanner(System.in);
-
-        while (true) {
+        while (proces) {
 
             System.out.println("Podaj numer operacji do przetestowania:");
             System.out.println("1. Dodaj nowy element do kopca");
@@ -30,6 +32,7 @@ public class oKopiec {
             switch (nrOperacji) {
 
                 case 0:
+                    proces = false;
                     break;
 
                 case 1:
@@ -49,7 +52,7 @@ public class oKopiec {
                     break;
 
                 case 4:
-                    kopiec.wydrukuj(0, "", true);
+                    kopiec.wydrukuj(0, " ", true);
                     break;
 
                 case 5:
@@ -59,12 +62,14 @@ public class oKopiec {
                     break;
 
                 case 6:
+                    scanner.nextLine();
                     System.out.println("Podaj nazwe pliku: ");
                     nazwa = scanner.nextLine();
                     kopiec.zapiszKopiec(nazwa);
                     break;
 
                 case 7:
+                    scanner.nextLine();
                     System.out.println("Podaj nazwe pliku: ");
                     nazwa = scanner.nextLine();
                     kopiec.wczytajKopiec(nazwa);
@@ -76,6 +81,10 @@ public class oKopiec {
 
                 case 9:
                     kopiec.minKopiec();
+                    break;
+
+                default:
+                    System.out.println("Podano zly numer!");
                     break;
 
             }

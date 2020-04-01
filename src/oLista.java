@@ -2,12 +2,15 @@ import java.util.Scanner;
 
 public class oLista {
 
+    private boolean proces = true;
+
+    Scanner scanner = new Scanner(System.in);
+
+    Lista lista = new Lista();
+
     public void operacjeLista() {
 
-        Scanner scanner = new Scanner(System.in);
-        Lista lista = new Lista();
-
-        while (true) {
+        while (proces) {
 
             System.out.println("Podaj numer operacji, ktora chcesz wykonac:");
             System.out.println("1. Dodanie na poczatek listy");
@@ -31,6 +34,7 @@ public class oLista {
             switch (nrOperacji) {
 
                 case 0:
+                    proces = false;
                     break;
 
                 case 1:
@@ -87,12 +91,14 @@ public class oLista {
                     break;
 
                 case 11:
+                    scanner.nextLine();
                     System.out.println("Podaj nazwe pliku: ");
                     nazwa = scanner.nextLine();
                     lista.wczytajLista(nazwa);
                     break;
 
                 case 12:
+                    scanner.nextLine();
                     System.out.println("Podaj nazwe pliku: ");
                     nazwa = scanner.nextLine();
                     lista.zapiszLista(nazwa);
