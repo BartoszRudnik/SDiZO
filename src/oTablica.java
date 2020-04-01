@@ -66,11 +66,13 @@ public class oTablica {
 
                 case 4:
                     tablica.usunPoczatek();
+                    tablica.zmniejszTablice();
                     System.out.println();
                     break;
 
                 case 5:
                     tablica.usunKoniec();
+                    tablica.zmniejszTablice();
                     System.out.println();
                     break;
 
@@ -78,6 +80,7 @@ public class oTablica {
                     System.out.print("Podaj pozycje: ");
                     index = scanner.nextInt();
                     tablica.usunWskazany(index);
+                    tablica.zmniejszTablice();
                     System.out.println();
                     break;
 
