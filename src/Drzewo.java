@@ -249,6 +249,23 @@ public class Drzewo {
 
     }
 
+    public boolean sprawdzBool(WezelDrzewo wezel, int wartosc) {
+
+        if (wezel != straznik || wezel != null) {
+
+            if (wezel.getWartosc() == wartosc)
+                return true;
+            else if (wartosc < wezel.getWartosc())
+                sprawdzBool(wezel.getlSyn(), wartosc);
+            else
+                sprawdzBool(wezel.getpSyn(), wartosc);
+
+        }
+
+        return false;
+
+    }
+
     public void maximum(WezelDrzewo wezel) {
 
         while (wezel.getpSyn() != null)

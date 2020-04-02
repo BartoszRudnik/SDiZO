@@ -353,6 +353,23 @@ public class AVL {
 
     }
 
+    public boolean sprawdzBool(WezelAvl wezel, int wartosc) {
+
+        if (wezel != null) {
+
+            if (wezel.getWartosc() == wartosc)
+                return true;
+            if (wartosc < wezel.getWartosc())
+                sprawdzBool(wezel.getlSyn(), wartosc);
+            else
+                sprawdzBool(wezel.getpSyn(), wartosc);
+
+        }
+
+        return false;
+
+    }
+
     public void wyczysc(WezelAvl wezel) {
 
         if (wezel != null) {
