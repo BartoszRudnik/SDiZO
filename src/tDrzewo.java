@@ -3,11 +3,11 @@ import java.util.Scanner;
 
 public class tDrzewo {
 
-    private int tab1[] = new int[100];
-    private int tab2[] = new int[1000];
-    private int tab3[] = new int[10000];
-    private int tab4[] = new int[100000];
-    private int tab5[] = new int[200000];
+    private int tab1[] = new int[1000];
+    private int tab2[] = new int[2000];
+    private int tab3[] = new int[5000];
+    private int tab4[] = new int[10000];
+    private int tab5[] = new int[20000];
 
     private long wyn1[] = new long[100];
 
@@ -36,11 +36,11 @@ public class tDrzewo {
             dane.generuj(tab3);
             dane.generuj(tab4);
             dane.generuj(tab5);
-            dane.zapisz("100.txt", tab1);
-            dane.zapisz("1000.txt", tab2);
-            dane.zapisz("10000.txt", tab3);
-            dane.zapisz("100000.txt", tab4);
-            dane.zapisz("200000.txt", tab5);
+            dane.zapisz("1000.txt", tab1);
+            dane.zapisz("2000.txt", tab2);
+            dane.zapisz("5000.txt", tab3);
+            dane.zapisz("10000.txt", tab4);
+            dane.zapisz("20000.txt", tab5);
 
             Random r = new Random();
             Random index = new Random();
@@ -55,27 +55,32 @@ public class tDrzewo {
 
                 case 1:
                     drzewo = new Drzewo();
-                    drzewo.wczytajDrzewo("100.txt");
-                    dodaj(r);
-                    dane.zapisz("Drzewo_1.txt", wyn1);
-
-                    drzewo = new Drzewo();
+                    wyn1 = new long[100];
                     drzewo.wczytajDrzewo("1000.txt");
                     dodaj(r);
                     dane.zapisz("Drzewo_1.txt", wyn1);
 
                     drzewo = new Drzewo();
+                    wyn1 = new long[100];
+                    drzewo.wczytajDrzewo("2000.txt");
+                    dodaj(r);
+                    dane.zapisz("Drzewo_1.txt", wyn1);
+
+                    drzewo = new Drzewo();
+                    wyn1 = new long[100];
+                    drzewo.wczytajDrzewo("5000.txt");
+                    dodaj(r);
+                    dane.zapisz("Drzewo_1.txt", wyn1);
+
+                    drzewo = new Drzewo();
+                    wyn1 = new long[100];
                     drzewo.wczytajDrzewo("10000.txt");
                     dodaj(r);
                     dane.zapisz("Drzewo_1.txt", wyn1);
 
                     drzewo = new Drzewo();
-                    drzewo.wczytajDrzewo("100000.txt");
-                    dodaj(r);
-                    dane.zapisz("Drzewo_1.txt", wyn1);
-
-                    drzewo = new Drzewo();
-                    drzewo.wczytajDrzewo("200000.txt");
+                    wyn1 = new long[100];
+                    drzewo.wczytajDrzewo("20000.txt");
                     dodaj(r);
                     dane.zapisz("Drzewo_1.txt", wyn1);
 
@@ -83,27 +88,32 @@ public class tDrzewo {
 
                 case 2:
                     drzewo = new Drzewo();
-                    drzewo.wczytajDrzewo("100.txt");
+                    wyn1 = new long[100];
+                    drzewo.wczytajDrzewo("1000.txt");
                     usun(index, tab1);
                     dane.zapisz("Drzewo_2.txt", wyn1);
 
                     drzewo = new Drzewo();
-                    drzewo.wczytajDrzewo("1000.txt");
+                    wyn1 = new long[100];
+                    drzewo.wczytajDrzewo("2000.txt");
                     usun(index, tab2);
                     dane.zapisz("Drzewo_2.txt", wyn1);
 
                     drzewo = new Drzewo();
-                    drzewo.wczytajDrzewo("10000.txt");
+                    wyn1 = new long[100];
+                    drzewo.wczytajDrzewo("5000.txt");
                     usun(index, tab3);
                     dane.zapisz("Drzewo_2.txt", wyn1);
 
                     drzewo = new Drzewo();
-                    drzewo.wczytajDrzewo("100000.txt");
+                    wyn1 = new long[100];
+                    drzewo.wczytajDrzewo("10000.txt");
                     usun(index, tab4);
                     dane.zapisz("Drzewo_2.txt", wyn1);
 
                     drzewo = new Drzewo();
-                    drzewo.wczytajDrzewo("200000.txt");
+                    wyn1 = new long[100];
+                    drzewo.wczytajDrzewo("20000.txt");
                     usun(index, tab5);
                     dane.zapisz("Drzewo_2.txt", wyn1);
 
@@ -111,28 +121,33 @@ public class tDrzewo {
 
                 case 3:
                     drzewo = new Drzewo();
-                    drzewo.wczytajDrzewo("100.txt");
-                    sprawdz(r, 100);
-                    dane.zapisz("Drzewo_3.txt", wyn1);
-
-                    drzewo = new Drzewo();
+                    wyn1 = new long[100];
                     drzewo.wczytajDrzewo("1000.txt");
-                    sprawdz(r, 1000);
+                    sprawdz(r);
                     dane.zapisz("Drzewo_3.txt", wyn1);
 
                     drzewo = new Drzewo();
+                    wyn1 = new long[100];
+                    drzewo.wczytajDrzewo("2000.txt");
+                    sprawdz(r);
+                    dane.zapisz("Drzewo_3.txt", wyn1);
+
+                    drzewo = new Drzewo();
+                    wyn1 = new long[100];
+                    drzewo.wczytajDrzewo("5000.txt");
+                    sprawdz(r);
+                    dane.zapisz("Drzewo_3.txt", wyn1);
+
+                    drzewo = new Drzewo();
+                    wyn1 = new long[100];
                     drzewo.wczytajDrzewo("10000.txt");
-                    sprawdz(r, 10000);
+                    sprawdz(r);
                     dane.zapisz("Drzewo_3.txt", wyn1);
 
                     drzewo = new Drzewo();
-                    drzewo.wczytajDrzewo("100000.txt");
-                    sprawdz(r, 100000);
-                    dane.zapisz("Drzewo_3.txt", wyn1);
-
-                    drzewo = new Drzewo();
-                    drzewo.wczytajDrzewo("200000.txt");
-                    sprawdz(r, 200000);
+                    wyn1 = new long[100];
+                    drzewo.wczytajDrzewo("20000.txt");
+                    sprawdz(r);
                     dane.zapisz("Drzewo_3.txt", wyn1);
 
                     break;
@@ -154,7 +169,7 @@ public class tDrzewo {
             long sTime = System.nanoTime();
             drzewo.dodajDrzewo(r.nextInt(maxi));
             long fTime = System.nanoTime();
-            long rTime = (fTime - sTime) / 1000;
+            long rTime = (fTime - sTime);
             wyn1[i] = rTime;
 
         }
@@ -166,23 +181,23 @@ public class tDrzewo {
         for (int i = 0; i < iloscTestow; i++) {
 
             long sTime = System.nanoTime();
-            drzewo.usunDrzewo(tab[index.nextInt(tab.length) - 1]);
+            drzewo.usunDrzewo(tab[index.nextInt(tab.length)]);
             long fTime = System.nanoTime();
-            long rTime = (fTime - sTime) / 1000;
+            long rTime = (fTime - sTime);
             wyn1[i] = rTime;
 
         }
 
     }
 
-    private void sprawdz(Random r, int bound) {
+    private void sprawdz(Random r) {
 
         for (int i = 0; i < iloscTestow; i++) {
 
             long sTime = System.nanoTime();
-            drzewo.sprawdzBool(drzewo.getKorzen(), r.nextInt(bound + 1));
+            drzewo.sprawdzBool(drzewo.getKorzen(), r.nextInt(maxi));
             long fTime = System.nanoTime();
-            long rTime = (fTime - sTime) / 1000;
+            long rTime = (fTime - sTime);
             wyn1[i] = rTime;
 
         }

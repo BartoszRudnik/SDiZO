@@ -251,7 +251,7 @@ public class Drzewo {
 
     public boolean sprawdzBool(WezelDrzewo wezel, int wartosc) {
 
-        if (wezel != straznik || wezel != null) {
+        if (wezel != straznik && wezel != null) {
 
             if (wezel.getWartosc() == wartosc)
                 return true;

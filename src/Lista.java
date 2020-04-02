@@ -167,6 +167,26 @@ public class Lista {
 
     }
 
+    public boolean sprawdz(int wartosc) {
+
+        if (getGlowa() == null)
+            return false;
+
+        WezelLista element = getGlowa();
+
+        while (element.getNast() != null) {
+
+            if (element.getWartosc() == wartosc)
+                return true;
+
+            element = element.getNast();
+
+        }
+
+        return false;
+
+    }
+
 
     public void wyswietlLista() {
 

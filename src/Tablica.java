@@ -40,6 +40,19 @@ public class Tablica {
 
     }
 
+    public boolean sprawdz(int liczba) {
+
+        for (int i = 0; i < pojemnosc; i++) {
+
+            if (tablica[i] == liczba)
+                return true;
+
+        }
+
+        return false;
+
+    }
+
     public void dodajKoniec(int liczba) {
 
         if (getIndex() >= getPojemnosc()) {
