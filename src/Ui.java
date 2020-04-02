@@ -8,11 +8,13 @@ public class Ui {
     private oRB rb = new oRB();
     private oAVL avl = new oAVL();
 
+    private boolean spr = true;
+
     public void stworz() {
 
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
+        while (spr) {
 
             System.out.println("Wybierz strukture do testowania:");
             System.out.println("1. Lista");
@@ -27,26 +29,31 @@ public class Ui {
             switch (nrStruktury) {
 
                 case 0:
-                    System.exit(0);
+                    spr = false;
                     break;
 
                 case 1:
+                    lista = new oLista();
                     lista.operacjeLista();
                     break;
 
                 case 2:
+                    tablica = new oTablica();
                     tablica.operacjeTablica();
                     break;
 
                 case 3:
+                    kopiec = new oKopiec();
                     kopiec.operacjeKopiec();
                     break;
 
                 case 4:
+                    rb = new oRB();
                     rb.operacjeRB();
                     break;
 
                 case 5:
+                    avl = new oAVL();
                     avl.operacjeAVL();
                     break;
 

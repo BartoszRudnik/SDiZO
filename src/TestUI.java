@@ -2,17 +2,19 @@ import java.util.Scanner;
 
 public class TestUI {
 
-    tTablica tablica = new tTablica();
-    tLista lista = new tLista();
-    tKopiec kopiec = new tKopiec();
-    tDrzewo drzewo = new tDrzewo();
-    tAVL avl = new tAVL();
+    private tTablica tablica = new tTablica();
+    private tLista lista = new tLista();
+    private tKopiec kopiec = new tKopiec();
+    private tDrzewo drzewo = new tDrzewo();
+    private tAVL avl = new tAVL();
 
     Scanner scanner = new Scanner(System.in);
 
+    private boolean spr = true;
+
     public void testUI() {
 
-        while (true) {
+        while (spr) {
 
             System.out.println("Wybierz strukture do przeprowadzenia pomiarow");
             System.out.println("1. Tablica");
@@ -27,26 +29,31 @@ public class TestUI {
             switch (nrStruktury) {
 
                 case 0:
-                    System.exit(0);
+                    spr = false;
                     break;
 
                 case 1:
+                    tablica = new tTablica();
                     tablica.test();
                     break;
 
                 case 2:
+                    lista = new tLista();
                     lista.test();
                     break;
 
                 case 3:
+                    kopiec = new tKopiec();
                     kopiec.test();
                     break;
 
                 case 4:
+                    drzewo = new tDrzewo();
                     drzewo.test();
                     break;
 
                 case 5:
+                    avl = new tAVL();
                     avl.test();
                     break;
 
