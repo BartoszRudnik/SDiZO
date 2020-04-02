@@ -17,6 +17,7 @@ public class tTablica {
     Scanner scanner = new Scanner(System.in);
 
     private static final int maxi = Integer.MAX_VALUE - 1;
+    private static final int iloscTestow = 100;
 
     private boolean spr = true;
 
@@ -58,61 +59,31 @@ public class tTablica {
                 case 1:
                     tablica = new Tablica();
                     tablica.wczytajTablica("100.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.dodajPoczatek(r.nextInt(maxi));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    dodajPoczatek(r);
                     dane.zapisz("Tablica_1.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("1000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.dodajPoczatek(r.nextInt(maxi));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    dodajPoczatek(r);
                     dane.zapisz("Tablica_1.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("10000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.dodajPoczatek(r.nextInt(maxi));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    dodajPoczatek(r);
                     dane.zapisz("Tablica_1.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("100000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.dodajPoczatek(r.nextInt(maxi));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    dodajPoczatek(r);
                     dane.zapisz("Tablica_1.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("200000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.dodajPoczatek(r.nextInt(maxi));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    dodajPoczatek(r);
                     dane.zapisz("Tablica_1.txt", wyn1);
 
                     break;
@@ -120,61 +91,31 @@ public class tTablica {
                 case 2:
                     tablica = new Tablica();
                     tablica.wczytajTablica("100.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.dodajKoniec(r.nextInt(maxi));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    dodajKoniec(r);
                     dane.zapisz("Tablica_2.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("1000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.dodajKoniec(r.nextInt(maxi));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    dodajKoniec(r);
                     dane.zapisz("Tablica_2.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("10000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.dodajKoniec(r.nextInt(maxi));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    dodajKoniec(r);
                     dane.zapisz("Tablica_2.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("100000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.dodajKoniec(r.nextInt(maxi));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    dodajKoniec(r);
                     dane.zapisz("Tablica_2.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("200000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.dodajKoniec(r.nextInt(maxi));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    dodajKoniec(r);
                     dane.zapisz("Tablica_2.txt", wyn1);
 
                     break;
@@ -182,61 +123,31 @@ public class tTablica {
                 case 3:
                     tablica = new Tablica();
                     tablica.wczytajTablica("100.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.dodaj(index.nextInt(100 + i - 1), r.nextInt(maxi));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    dodajIndex(r, index, 100);
                     dane.zapisz("Tablica_3.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("1000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.dodaj(index.nextInt(1000 + i - 1), r.nextInt(maxi));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    dodajIndex(r, index, 1000);
                     dane.zapisz("Tablica_3.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("10000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.dodaj(index.nextInt(10000 + i - 1), r.nextInt(maxi));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    dodajIndex(r, index, 10000);
                     dane.zapisz("Tablica_3.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("100000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.dodaj(index.nextInt(100000 + i - 1), r.nextInt(maxi));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    dodajIndex(r, index, 100000);
                     dane.zapisz("Tablica_3.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("200000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.dodaj(index.nextInt(200000 + i - 1), r.nextInt(maxi));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    dodajIndex(r, index, 200000);
                     dane.zapisz("Tablica_3.txt", wyn1);
 
                     break;
@@ -244,61 +155,31 @@ public class tTablica {
                 case 4:
                     tablica = new Tablica();
                     tablica.wczytajTablica("100.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.usunPoczatek();
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    usunPoczatek();
                     dane.zapisz("Tablica_4.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("1000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.usunPoczatek();
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    usunPoczatek();
                     dane.zapisz("Tablica_4.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("10000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.usunPoczatek();
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    usunPoczatek();
                     dane.zapisz("Tablica_4.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("100000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.usunPoczatek();
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    usunPoczatek();
                     dane.zapisz("Tablica_4.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("200000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.usunPoczatek();
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    usunPoczatek();
                     dane.zapisz("Tablica_4.txt", wyn1);
 
                     break;
@@ -306,61 +187,31 @@ public class tTablica {
                 case 5:
                     tablica = new Tablica();
                     tablica.wczytajTablica("100.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.usunKoniec();
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    usunKoniec();
                     dane.zapisz("Tablica_5.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("1000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.usunKoniec();
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    usunKoniec();
                     dane.zapisz("Tablica_5.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("10000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.usunKoniec();
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    usunKoniec();
                     dane.zapisz("Tablica_5.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("100000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.usunKoniec();
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    usunKoniec();
                     dane.zapisz("Tablica_5.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("200000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.usunKoniec();
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    usunKoniec();
                     dane.zapisz("Tablica_5.txt", wyn1);
 
                     break;
@@ -368,61 +219,31 @@ public class tTablica {
                 case 6:
                     tablica = new Tablica();
                     tablica.wczytajTablica("100.txt");
-                    for (int i = 0; i < 99; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.usunWskazany(index.nextInt(99 - i));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    usunIndex(index, 99);
                     dane.zapisz("Tablica_6.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("1000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.usunWskazany(index.nextInt(999 - i));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    usunIndex(index, 999);
                     dane.zapisz("Tablica_6.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("10000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.usunWskazany(index.nextInt(9999 - i));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    usunIndex(index, 9999);
                     dane.zapisz("Tablica_6.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("100000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.usunWskazany(index.nextInt(99999 - i));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    usunIndex(index, 99999);
                     dane.zapisz("Tablica_6.txt", wyn1);
 
                     tablica = new Tablica();
                     wyn1 = new long[100];
                     tablica.wczytajTablica("200000.txt");
-                    for (int i = 0; i < 100; i++) {
-                        long sTime = System.nanoTime();
-                        tablica.usunWskazany(index.nextInt(199999 - i));
-                        long fTime = System.nanoTime();
-                        long rTime = (fTime - sTime) / 1000;
-                        wyn1[i] = rTime;
-                    }
+                    usunIndex(index, 199999);
                     dane.zapisz("Tablica_6.txt", wyn1);
 
                     break;
@@ -434,6 +255,74 @@ public class tTablica {
             }
 
         }
+    }
+
+    private void usunKoniec() {
+        for (int i = 0; i < iloscTestow; i++) {
+            long sTime = System.nanoTime();
+            tablica.usunKoniec();
+            long fTime = System.nanoTime();
+            long rTime = (fTime - sTime) / 1000;
+            wyn1[i] = rTime;
+        }
+    }
+
+    private void usunPoczatek() {
+        for (int i = 0; i < iloscTestow; i++) {
+            long sTime = System.nanoTime();
+            tablica.usunPoczatek();
+            long fTime = System.nanoTime();
+            long rTime = (fTime - sTime) / 1000;
+            wyn1[i] = rTime;
+        }
+    }
+
+    private void dodajIndex(Random r, Random index, int bound) {
+
+        for (int i = 0; i < iloscTestow; i++) {
+
+            long sTime = System.nanoTime();
+            tablica.dodaj(index.nextInt(bound + i - 1), r.nextInt(maxi));
+            long fTime = System.nanoTime();
+            long rTime = (fTime - sTime) / 1000;
+            wyn1[i] = rTime;
+
+        }
+
+    }
+
+    private void dodajKoniec(Random r) {
+        for (int i = 0; i < iloscTestow; i++) {
+            long sTime = System.nanoTime();
+            tablica.dodajKoniec(r.nextInt(maxi));
+            long fTime = System.nanoTime();
+            long rTime = (fTime - sTime) / 1000;
+            wyn1[i] = rTime;
+        }
+    }
+
+    private void dodajPoczatek(Random r) {
+        for (int i = 0; i < iloscTestow; i++) {
+            long sTime = System.nanoTime();
+            tablica.dodajPoczatek(r.nextInt(maxi));
+            long fTime = System.nanoTime();
+            long rTime = (fTime - sTime) / 1000;
+            wyn1[i] = rTime;
+        }
+    }
+
+    private void usunIndex(Random index, int bound) {
+
+        for (int i = 0; i < iloscTestow; i++) {
+
+            long sTime = System.nanoTime();
+            tablica.usunWskazany(index.nextInt(bound - i));
+            long fTime = System.nanoTime();
+            long rTime = (fTime - sTime) / 1000;
+            wyn1[i] = rTime;
+
+        }
+
     }
 
 }

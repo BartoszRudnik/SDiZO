@@ -182,6 +182,23 @@ public class Kopiec {
 
     }
 
+    public boolean sprawdz(int liczba) {
+
+        int i = 1;
+
+        while (i < getRozmiar()) {
+
+            if (kopiec[i] == liczba)
+                return true;
+
+            i++;
+
+        }
+
+        return false;
+
+    }
+
     public void zapiszKopiec(String nazwaPliku) {
 
         try {
