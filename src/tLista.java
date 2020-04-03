@@ -23,6 +23,17 @@ public class tLista {
 
     public void test() {
 
+        dane.generuj(tab1);
+        dane.generuj(tab2);
+        dane.generuj(tab3);
+        dane.generuj(tab4);
+        dane.generuj(tab5);
+        dane.zapisz("1000.txt", tab1);
+        dane.zapisz("2000.txt", tab2);
+        dane.zapisz("5000.txt", tab3);
+        dane.zapisz("10000.txt", tab4);
+        dane.zapisz("20000.txt", tab5);
+
         while (spr) {
 
             System.out.println("Wybierz operacje do zmierzenia");
@@ -34,17 +45,6 @@ public class tLista {
             System.out.println("6. Usuwanie z wybranej pozycji");
             System.out.println("7. Przeszukiwanie");
             System.out.println("0. Cofnij do menu glownego");
-
-            dane.generuj(tab1);
-            dane.generuj(tab2);
-            dane.generuj(tab3);
-            dane.generuj(tab4);
-            dane.generuj(tab5);
-            dane.zapisz("1000.txt", tab1);
-            dane.zapisz("2000.txt", tab2);
-            dane.zapisz("5000.txt", tab3);
-            dane.zapisz("10000.txt", tab4);
-            dane.zapisz("20000.txt", tab5);
 
             Random r = new Random();
             Random index = new Random();
