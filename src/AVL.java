@@ -346,10 +346,13 @@ public class AVL {
 
         }
 
-        if (sprawdz)
+        if (sprawdz) {
             System.out.println("Element o podanej wartosci znajduje sie w drzewie AVL");
-        else
+            return;
+        } else {
             System.out.println("Element o podanej wartosci nie znajduje sie w drzewie AVL");
+            return;
+        }
 
     }
 

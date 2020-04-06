@@ -268,7 +268,7 @@ public class Drzewo {
 
     public void maximum(WezelDrzewo wezel) {
 
-        while (wezel.getpSyn() != null)
+        while (wezel.getpSyn() != null && wezel.getlSyn() != straznik)
             wezel = wezel.getpSyn();
 
         if (rozmiar > 0)
@@ -280,7 +280,7 @@ public class Drzewo {
 
     public void minimum(WezelDrzewo wezel) {
 
-        while (wezel.getlSyn() != null)
+        while (wezel.getlSyn() != null && wezel.getlSyn() != straznik)
             wezel = wezel.getlSyn();
 
         if (rozmiar > 0) {

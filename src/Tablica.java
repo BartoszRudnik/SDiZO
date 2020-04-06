@@ -86,6 +86,9 @@ public class Tablica {
 
     public void dodaj(int pozycja, int liczba) {
 
+        if (pozycja < 0)
+            return;
+
         if ((getIndex() + 1) >= getPojemnosc()) {
             powiekszTablice();
         }
@@ -251,6 +254,9 @@ public class Tablica {
 
     public void maxTablica() {
 
+        if (index == 0)
+            return;
+
         int max = tablica[0];
 
         for (int i = 1; i < getIndex(); i++) {
@@ -264,6 +270,9 @@ public class Tablica {
     }
 
     public void minTablica() {
+
+        if (index == 0)
+            return;
 
         int min = tablica[0];
 

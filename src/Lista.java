@@ -53,6 +53,9 @@ public class Lista {
         WezelLista element = new WezelLista(liczba);
         WezelLista pomocniczy = getGlowa();
 
+        if (pozycja < 0)
+            return;
+
         if (pozycja > rozmiarListy())
             pozycja = rozmiarListy();
 
@@ -277,6 +280,9 @@ public class Lista {
 
         WezelLista wezel = glowa;
 
+        if (glowa == null)
+            return;
+
         int max = wezel.getWartosc();
 
         if (wezel.getNast() != null)
@@ -298,6 +304,9 @@ public class Lista {
     public void minLista() {
 
         WezelLista wezel = glowa;
+
+        if (glowa == null)
+            return;
 
         int min = wezel.getWartosc();
 

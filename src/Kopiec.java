@@ -6,6 +6,8 @@ public class Kopiec {
     private int index;
     private int rozmiar;
 
+    private boolean sprawdz = false;
+
     public Kopiec() {
 
         rozmiar = 3;
@@ -99,7 +101,8 @@ public class Kopiec {
     public void usun(int liczba) {
 
         zmniejszKopiec(liczba);
-        zmniejszIndex();
+        if (sprawdz == true)
+            zmniejszIndex();
         budujKopiec();
 
     }
@@ -139,10 +142,13 @@ public class Kopiec {
     private void zmniejszKopiec(int liczba) {
 
         int pomocnicza[] = new int[getRozmiar() - 1];
+        sprawdz = false;
 
         for (int i = 1; i < getRozmiar(); i++) {
 
             if (kopiec[i] == liczba) {
+
+                sprawdz = true;
 
                 for (int j = 1; j < i; j++) {
                     pomocnicza[j] = kopiec[j];
@@ -156,8 +162,11 @@ public class Kopiec {
 
         }
 
-        setRozmiar(getRozmiar() - 1);
-        kopiec = pomocnicza;
+        if (sprawdz == true) {
+            setRozmiar(getRozmiar() - 1);
+            kopiec = pomocnicza;
+        } else
+            return;
 
     }
 
